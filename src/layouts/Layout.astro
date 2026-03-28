@@ -1,12 +1,18 @@
+---
+
+import "../assets/app.css";
+import MeguisIcon from "../assets/Meguis-Logo.ico";
+
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href={MeguisIcon} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Meguis</title>
 	</head>
 	<body>
 		<slot />
@@ -14,10 +20,18 @@
 </html>
 
 <style>
+
+	@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 	html,
 	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		margin: 0;
+		padding: 0;
 		width: 100%;
 		height: 100%;
+		background-color: #0B223F;
+		font-family: "Inter", sans-serif;
 	}
 </style>
