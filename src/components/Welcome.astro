@@ -18,17 +18,18 @@ import MeguisLogo from "../assets/Meguis-Logo.webp";
       Estamos trabajando para brindarte la mejor consultoría en importaciones y
       exportaciones desde Puerto Cortés.
     </p>
-    <div class="card-actions">
+    <form class="card-actions" onsubmit="return false;">
       <input
-        type="text"
+        type="email"
         placeholder="Ingresa tu Email"
         class="input input-bordered w-70 bg-white text-black"
+        required
       />
-      <button class="btn-suscribe">Registrarme</button>
-    </div>
+      <button type="submit" class="btn-suscribe">Registrarme</button>
+    </form>
     <p class="text-xs text-white mt-2">
-      NO ENVIAREMOS SPAM SOLO, LO USAREMOS PARA NOTIFICAR CUANDO LANZEMOS LA
-      PAGINA
+      No enviaremos spam. Solo lo usaremos para notificarte cuando lancemos la
+      página.
     </p>
   </div>
 </div>
@@ -59,15 +60,22 @@ import MeguisLogo from "../assets/Meguis-Logo.webp";
     aspect-ratio: 16 / 9;
     padding-left: clamp(1rem, 5vw, 3rem);
     padding-right: clamp(1rem, 5vw, 3rem);
+    position: relative;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
   }
   .logo {
-	position: absolute;
-	bottom: 58%;
-	left: 41%;
-	z-index: 10;
-	width: 200px;
-	height: 200px;
-}
+    position: absolute;
+    bottom: 58%;
+    left: 41%;
+    z-index: 10;
+    width: 200px;
+    height: 200px;
+  }
 .input {
   border: none;
   padding: 0.5rem 1rem;
@@ -106,7 +114,7 @@ import MeguisLogo from "../assets/Meguis-Logo.webp";
       margin-bottom: 0.5rem;
     }
 
-	.logo {
+    .logo {
       position: absolute;
       bottom: 82%;
       left: 38%;
