@@ -18,9 +18,11 @@ import MeguisLogo from "../assets/Meguis-Logo.webp";
       Estamos trabajando para brindarte la mejor consultoría en importaciones y
       exportaciones desde Puerto Cortés.
     </p>
-    <form class="card-actions" onsubmit="return false;">
+    <form class="card-actions" name="subscribe" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="subscribe" />
       <input
         type="email"
+        name="email"
         placeholder="Ingresa tu Email"
         class="input input-bordered w-70 bg-white text-black"
         required
