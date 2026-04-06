@@ -1,0 +1,54 @@
+
+---
+import Meguis_logo from "../assets/Meguis-Logo.webp";
+---
+  <nav
+    class=" fixed top-0 w-full z-50 bg-slate-900/60 backdrop-blur-xl shadow-2xl shadow-black/40 flex justify-between items-center px-3 py-4 max-w-full mx-auto"
+  >
+    <div class="flex items-center gap-2">
+      <img
+        alt="MEGUIS Logo"
+        class="h-20 w-auto"
+        data-alt="minimalist professional logo for MEGUIS customs agency featuring stylized geometric shapes and deep orange accents on a dark field"
+        src={Meguis_logo.src}
+      />
+      <span class="text-xl  font-bold text-orange-500">MEGUIS</span>
+    </div>
+    <div class="hidden md:flex gap-8 items-center">
+      <a
+        class="font-sans text-s font-medium text-orange-400 border-b-2 border-orange-500 pb-1 transition-all"
+        href="#">Servicios</a
+      >
+      <a
+        class="font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
+        href="#">Sobre Nosotros</a
+      >
+      <a
+        class="font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
+        href="#">Cómo Funciona</a
+      >
+      <a
+        class="font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
+        href="#">Preguntas Frecuentes</a
+      >
+    </div>
+    <button
+      class="btn-cotizar"
+    >
+      Solicitar Cotización
+    </button>
+  </nav>
+
+
+<style>
+    .btn-cotizar {
+        background-color: #f97316;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 15px;
+        font-weight: 500;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+</style>
