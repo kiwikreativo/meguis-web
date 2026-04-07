@@ -1,0 +1,102 @@
+---
+import {
+  CarFront,
+  Box,
+  Truck,
+  Gavel,
+  type Icon as IconType,
+} from "@lucide/astro";
+
+interface Service {
+  title: string;
+  description: string;
+  icon: typeof IconType;
+}
+
+let services: Service[] = [
+  {
+    title: "Transporte Terrestre",
+    description:
+      "Servicios de transporte terrestre para carga y mercancías en todo Honduras.",
+    icon: CarFront,
+  },
+  {
+    title: "Almacenamiento Seguro",
+    description:
+      "Instalaciones de almacenamiento seguras para proteger tus activos valiosos.",
+    icon: Box,
+  },
+  {
+    title: "Logística Integral",
+    description:
+      "Soluciones logísticas personalizadas para optimizar tu cadena de suministro.",
+    icon: Truck,
+  },
+  {
+    title: "Asesoría Legal Aduanera",
+    description:
+      "Asesoría legal especializada en comercio y transporte para proteger tus intereses.",
+    icon: Gavel,
+  },
+];
+---
+
+<section
+  class="py-24 bg-surface w-screen ml-[calc(-50vw+50%)]"
+  style="background-color: #011326;"
+>
+  <div class="container mx-auto px-8 md:px-12">
+    <div
+      class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+    >
+      <div class="max-w-2xl">
+        <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+          Servicios Integrales para el Mercado <span
+            style="color: orangered; font-style: italic;">Premium</span
+          >
+        </h2>
+        <p class="text-on-surface-variant text-xl">
+          Especialistas en la gestión de activos de alto valor y logística en
+          todo el territorio hondureño.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container mx-auto px-8 md:px-12 mb-5">
+    <div class="card grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-8xl mx-auto mb-5">
+      {
+        services.map((service) => (
+          <div class="glass-card p-10 rounded-xl editorial-shadow group" data-aos="fade-up" data-aos-duration="800" style="box-shadow: 0 10px 30px rgba(61, 64, 91, 0.3); opacity: 1;">
+            <div class="w-12 h-12 bg-brand-orange/10 rounded-full flex items-center justify-center mb-8 group-hover:bg-brand-orange/20 transition-colors">
+              <span class="material-symbols-outlined text-brand-orange text-3xl">
+                <service.icon />
+              </span>
+            </div>
+            <h3 class="text-2xl font-serif font-bold mb-4">{service.title}</h3>
+            <p class="text-on-surface-variant leading-relaxed">
+              {service.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+    @keyframes appear {
+        from {
+            opacity: 0;
+            scale: 0.5;
+        }
+        to {
+            opacity: 1;
+            scale: 1;
+        }
+    }
+    .card .glass-card {
+        animation: appear 0.8s ease-out forwards;
+        animation-timeline: view();
+        animation-range: entry 0;
+    }
+</style>
