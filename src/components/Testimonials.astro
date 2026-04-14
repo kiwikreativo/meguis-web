@@ -45,10 +45,10 @@ let comments: Comment[] = [
         </p>
       </div>
     </div>
-    <div class="card grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
       {comments.map((comment) => (
         <div
-          class="flex flex-col gap-4 p-6 rounded-xl bg-surface-container border border-white/5 hover:border-brand-orange/30 transition-all group"
+          class="card flex flex-col gap-4 p-6 rounded-xl bg-surface-container border border-white/5 hover:border-brand-orange/30 transition-all group"
         >
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-brand-orange" style="color: orangered; fill: orangered;"><Star size={20} /></span>
