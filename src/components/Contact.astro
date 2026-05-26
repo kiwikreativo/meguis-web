@@ -1,7 +1,7 @@
 ---
 import { Phone, Mail } from "@lucide/astro";
 ---
-
+<!-- TODO:Correct the setup for the form in netlify -->
 <!-- Contact Form Section -->
 <section class="py-24 bg-surf relative" id="contact" style="background-color: #001021;">
   <div class="container mx-auto px-8 md:px-12">
@@ -32,7 +32,7 @@ import { Phone, Mail } from "@lucide/astro";
         </div>
       </div>
       <div class="md:w-2/3 p-12" style="background-color: rgba(47, 47, 47, 0.9);">
-        <form class="space-y-6">
+        <form class="space-y-6" data-netlify="true" name="contact">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-2">
               <label
@@ -42,6 +42,7 @@ import { Phone, Mail } from "@lucide/astro";
               <input
                 class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-brand-orange focus:ring-0 text-on-surface py-3"
                 type="text"
+                name="name"
               />
             </div>
             <div class="space-y-2">
@@ -52,6 +53,8 @@ import { Phone, Mail } from "@lucide/astro";
               <input
                 class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-brand-orange focus:ring-0 text-on-surface py-3"
                 type="email"
+                name="email"
+
               />
             </div>
           </div>
@@ -62,11 +65,13 @@ import { Phone, Mail } from "@lucide/astro";
             >
             <select
               class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-brand-orange focus:ring-0 text-on-surface py-3"
+              name="service[]"
+              multiple
             >
-              <option>Importación/Exportación de Vehículos</option>
-              <option>Mercancías Comerciales</option>
-              <option>Consultoría Aduanera</option>
-              <option>Logística Integral</option>
+              <option value="import/export">Importación/Exportación de Vehículos</option>
+              <option value="commercial-goods">Mercancías Comerciales</option>
+              <option value="customs-consulting">Consultoría Aduanera</option>
+              <option value="integrated-logistics">Logística Integral</option>
             </select>
           </div>
           <div class="space-y-2">
@@ -76,7 +81,9 @@ import { Phone, Mail } from "@lucide/astro";
             >
             <textarea
               class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-orangered-300 outline-none focus:ring-0 text-on-surface py-3 resize-none"
-              rows="3"></textarea>
+              rows="3"
+              name="message"
+            ></textarea>
           </div>
           <button
             class="w-full bg-brand-orange text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:brightness-110 transition-all mt-4"

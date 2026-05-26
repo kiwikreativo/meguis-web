@@ -12,24 +12,19 @@ interface Service {
   description: string;
   icon: typeof IconType;
 }
-
+// TODO: Quitar almacenamiento seguro y editar el transporte terrestre no como servicio sino como la capacidad de conseguir el servicio en caso de ser requerido
+// TODO: editar logistica integral de una manera mas adaptada a la realidad de Meguis.
 let services: Service[] = [
   {
     title: "Transporte Terrestre",
     description:
-      "Servicios de transporte terrestre para carga y mercancías en todo Honduras.",
+      "Contamos con aliados logísticos para ofrecer transporte terrestre seguro y eficiente en todo el país.",
     icon: CarFront,
-  },
-  {
-    title: "Almacenamiento Seguro",
-    description:
-      "Instalaciones de almacenamiento seguras para proteger tus activos valiosos.",
-    icon: Box,
   },
   {
     title: "Logística Integral",
     description:
-      "Soluciones logísticas personalizadas para optimizar tu cadena de suministro.",
+      "Soluciones logísticas personalizadas para cada cliente desde la planificación hasta la ejecución.",
     icon: Truck,
   },
   {

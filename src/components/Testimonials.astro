@@ -7,22 +7,21 @@ interface Comment {
   icon: typeof IconType;
 }
 
-
 let comments: Comment[] = [
   {
     name: "Aldo Obregon",
-    text: "Excelente servicio, mi carga llegó a tiempo y en perfectas condiciones.",
-    icon: Star, 
+    text: "Los mejores en desaduanaje, 100% confiables.",
+    icon: Star,
   },
   {
-    name: "Jane Smith",
-    text: "La atención al cliente es excepcional, siempre dispuestos a ayudar.",
-    icon: Star, 
+    name: "Guillermo Cerna",
+    text: "Excelente servicio y muy responsables. Me ayudaron con todos el proceso de importación y nacionalización, siempre explicando cada paso. Se nota la experiencia en temas aduaneros. Muy recomendados.",
+    icon: Star,
   },
   {
-    name: "Carlos Ruiz",
-    text: "Recomiendo MEGUIS para cualquier necesidad de transporte en Honduras.",
-    icon: Star, 
+    name: "Cesar Mayen",
+    text: "Rapidez en desaduanaje y sobre todo la comunicación.",
+    icon: Star,
   },
 ];
 ---
@@ -45,30 +44,58 @@ let comments: Comment[] = [
         </p>
       </div>
     </div>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-      {comments.map((comment) => (
-        <div
-          class="card flex flex-col gap-4 p-6 rounded-xl bg-surface-container border border-white/5 hover:border-brand-orange/30 transition-all group"
-        >
-          <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-brand-orange" style="color: orangered; fill: orangered;"><Star size={20} /></span>
-            <span class="material-symbols-outlined text-brand-orange" style="color: orangered; fill: orangered;"><Star size={20} /></span>
-            <span class="material-symbols-outlined text-brand-orange" style="color: orangered; fill: orangered;"><Star size={20} /></span>
-            <span class="material-symbols-outlined text-brand-orange" style="color: orangered; fill: orangered;"><Star size={20} /></span>
-            <span class="material-symbols-outlined text-brand-orange" style="color: orangered; fill: orangered;"><Star size={20} /></span>
-          </div>
-          <p class="text-sm text-on-surface-variant">{comment.text}</p>
-            <div class="card-footer">
-            <h4 class="font-bold text-on-surface">{comment.name}</h4>
+      {
+        comments.map((comment) => (
+          <a href="https://www.facebook.com/share/1DvcNGc4Mp/">
+            <div class="card flex flex-col gap-4 p-6 rounded-xl bg-surface-container border border-white/5 hover:border-brand-orange/30 transition-all group">
+              <div class="flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-brand-orange"
+                  style="color: orangered; fill: orangered;"
+                >
+                  <Star size={20} />
+                </span>
+                <span
+                  class="material-symbols-outlined text-brand-orange"
+                  style="color: orangered; fill: orangered;"
+                >
+                  <Star size={20} />
+                </span>
+                <span
+                  class="material-symbols-outlined text-brand-orange"
+                  style="color: orangered; fill: orangered;"
+                >
+                  <Star size={20} />
+                </span>
+                <span
+                  class="material-symbols-outlined text-brand-orange"
+                  style="color: orangered; fill: orangered;"
+                >
+                  <Star size={20} />
+                </span>
+                <span
+                  class="material-symbols-outlined text-brand-orange"
+                  style="color: orangered; fill: orangered;"
+                >
+                  <Star size={20} />
+                </span>
+              </div>
+              <p class="text-sm text-on-surface-variant">{comment.text}</p>
+              <div class="card-footer">
+                <h4 class="font-bold text-on-surface">{comment.name}</h4>
+              </div>
             </div>
-        </div>
-      ))}
+          </a>
+        ))
+      }
+    </div>
   </div>
+
+  <style>
+    .card {
+      border-left: 4px solid orangered;
+    }
+  </style>
 </section>
-
-<style>
-
-  .card {
-    border-left: 4px solid orangered;
-  }
-</style>
