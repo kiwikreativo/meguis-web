@@ -1,5 +1,5 @@
 ---
-import { Phone, Mail, MapPin } from "@lucide/astro";
+import { Phone, Mail, MapPin, Send } from "@lucide/astro";
 ---
 
 <div class="container-fluid">
@@ -7,7 +7,7 @@ import { Phone, Mail, MapPin } from "@lucide/astro";
     <div class="row">
       <div class="col-6">
         <div class="entitle">
-          <div class="mail-entitle" style="display: flex; align-items: center;">
+          <div class="mail-entitle" >
               <div class="icon-entitle">
                 <Mail size={12} />
               </div>
@@ -42,37 +42,50 @@ import { Phone, Mail, MapPin } from "@lucide/astro";
           </div>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-6 form-submit">
         <form>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
-              >Email address</label
+            <label class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="John Doe"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label"
+              >Correo</label
             >
             <input
               type="email"
               class="form-control"
-              id="exampleInputEmail1"
               aria-describedby="emailHelp"
+              placeholder="johndoe@gmail.com"
+              required
             />
-            <div id="emailHelp" class="form-text">
-              We'll never share your email with anyone else.
-            </div>
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input
-              type="password"
+          <div class="mb-3 select-service">
+            <label class="form-label">Servicio</label>
+            <select class="form-select" aria-label="Default Seleccione un servicio">
+              <option>Seleccione un servicio</option>
+              <option>Logística Integral</option>
+              <option>Transporte Terrestre</option>
+              <option>Asesoría Legal Aduanera</option>
+            </select>
+          </div>
+          <div class="mb-3 message">
+            <label class="form-label">Mensaje</label>
+            <textarea
               class="form-control"
-              id="exampleInputPassword1"
-            />
+              rows="3"
+              placeholder="Escriba su mensaje aquí..."
+            ></textarea>
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-            <label class="form-check-label" for="exampleCheck1"
-              >Check me out</label
-            >
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary"> 
+            <div class="icon">
+              <Send size={18} /> 
+            </div>
+            Submit</button>
         </form>
       </div>
     </div>
@@ -82,13 +95,13 @@ import { Phone, Mail, MapPin } from "@lucide/astro";
 <style>
   .container-fluid {
     width: 100%;
-    height: 85vh;
+    height: 95vh;
     background-color: #011223;
   }
 
   .container {
     width: 80%;
-    margin: 0 auto;
+    margin: 0  auto;
   }
 
   .row {
@@ -98,17 +111,19 @@ import { Phone, Mail, MapPin } from "@lucide/astro";
     color: white;
     padding: 20px;
     border-radius: 20px;
-    width: 80%;
+    width: 90%;
     margin: 100px auto;
   }
 
   .entitle {
     margin-top: 6%;
     margin-left: 2%;
-    width: 60%;
+    width: 95%;
   }
 
   .mail-entitle {
+    display: flex;
+    align-items: center;
     background-color: rgba(255, 183, 3, 0.1);
     width: 130px;
     border-radius: 50px;
@@ -135,15 +150,16 @@ import { Phone, Mail, MapPin } from "@lucide/astro";
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 10px;
+    line-height: 1.1;
   }
 
   .entitle-text {
-    font-size: 14px;
+    font-size: 16px;
     color: grey;
   }
 
   .contact-info {
-    margin-top: 8%;
+    margin-top: 40%;
     margin-left: 2%;
     margin-bottom: 4%;
   }
@@ -166,4 +182,87 @@ import { Phone, Mail, MapPin } from "@lucide/astro";
     font-size: 13px;
     color: white;
   }
+
+  /* Column Form */
+
+  .form-submit{
+    background-color: rgba(243, 91, 4, 1);
+    padding: 30px;
+    width: 60%;
+    border-radius: 20px;
+    
+  }
+
+  .form-submit label {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 5%;
+  }
+
+  .form-submit input{
+    display:flex;
+    margin: 2% auto;
+    flex-direction: column;
+    background-color: rgba(241, 135, 1, 1);
+    width: 90%;
+    padding: 15px;
+    border-radius: 10px;
+    color: black;
+  }
+
+  .form-submit input:focus{
+    outline: none;
+    border: 2px solid #fefdfd;
+  }
+
+
+
+  .form-submit select{
+    display:flex;
+    margin: 2% auto;
+    flex-direction: column;
+    background-color: rgba(241, 135, 1, 1);
+    width: 90%;
+    padding: 18px;
+    border-radius: 10px;
+    color: black;
+  }
+
+  .form-submit textarea{
+    display:flex;
+    margin: 2% auto;
+    flex-direction: column;
+    background-color: rgba(241, 135, 1, 1);
+    width: 90%;
+    padding: 15px;
+    border-radius: 10px;
+    color: black;
+    resize: none;
+    auto-grow: true;
+  }
+
+  .form-submit textarea:focus{
+    outline: none;
+    border: 2px solid #fefdfd;
+  }
+
+  .form-submit button{
+    display: flex;
+    margin-left: 5%;
+    margin-top: 5%;
+    background-color: #011223;
+    width: 33%;
+    padding: 25px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+  }
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    .row {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
 </style>
