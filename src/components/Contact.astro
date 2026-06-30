@@ -15,26 +15,26 @@ import { Phone, Mail, MapPin, Send } from "@lucide/astro";
           </div>
           <h1 class="contact-title">Construyamos su Futuro Logistico</h1>
           <p class="entitle-text">
-            ¿Listo para optimizar sus operaciones? Complete el formulario y nos
-            pondremos en contacto con usted.
+            Tiene un proyecto en mente o necesita asesoría logística?
+Complete el formulario y nuestro equipo se pondrá en contacto con usted a la mayor brevedad. Le brindaremos una atención personalizada para entender sus necesidades y ofrecer la mejor solución en logística, aduanas y comercio internacional. Estamos listos para acompañarle en cada paso de su operación.
           </p>
         </div>
         <div class="contact-info">
-          <div class="group-1" style="display: flex; align-items: center;">
-            <div class="phone" style="display: flex; align-items: center;">
+          <div class="group-1">
+            <div class="contact-item phone">
               <div class="icon">
                 <Phone size={18} />
               </div>
               <span class="contact-data">+504 963808889</span>
             </div>
-            <div class="mail" style="display: flex; align-items: center;">
+            <div class="contact-item mail">
               <div class="icon">
                 <Mail size={18} />
               </div>
               <span class="contact-data">info@meguis.com</span>
             </div>
           </div>
-          <div class="location" style="display: flex; align-items: center;">
+          <div class="contact-item location">
             <div class="icon">
               <MapPin size={18} />
             </div>
@@ -85,7 +85,7 @@ import { Phone, Mail, MapPin, Send } from "@lucide/astro";
             <div class="icon">
               <Send size={18} /> 
             </div>
-            Submit</button>
+            Enviar</button>
         </form>
       </div>
     </div>
@@ -95,30 +95,36 @@ import { Phone, Mail, MapPin, Send } from "@lucide/astro";
 <style>
   .container-fluid {
     width: 100%;
-    height: 95vh;
+    min-height: 95vh;
     background-color: #011223;
+    padding: 60px 0;
+    box-sizing: border-box;
   }
 
   .container {
-    width: 80%;
-    margin: 0  auto;
+    width: min(1200px, 90%);
+    margin: 0 auto;
   }
 
   .row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     background-color: #012f47;
     color: white;
     padding: 20px;
     border-radius: 20px;
-    width: 90%;
-    margin: 100px auto;
+    width: 100%;
+    margin: 0 auto;
+    gap: 24px;
+    box-sizing: border-box;
   }
 
   .entitle {
-    margin-top: 6%;
-    margin-left: 2%;
-    width: 95%;
+    margin-top: 10%;
+    margin-left: 0;
+    width: 100%;
+    max-width: 560px;
   }
 
   .mail-entitle {
@@ -159,15 +165,26 @@ import { Phone, Mail, MapPin, Send } from "@lucide/astro";
   }
 
   .contact-info {
-    margin-top: 40%;
-    margin-left: 2%;
-    margin-bottom: 4%;
+    margin-top: 60px;
+    margin-left: 0;
+    margin-bottom: 24px;
   }
 
   .group-1 {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .location {
+    margin-top: 0;
   }
 
   .icon {
@@ -175,7 +192,7 @@ import { Phone, Mail, MapPin, Send } from "@lucide/astro";
     color: black;
     border-radius: 50%;
     padding: 8px;
-    margin-right: 10px;
+    min-width: 36px;
   }
 
   .contact-data {
@@ -188,9 +205,10 @@ import { Phone, Mail, MapPin, Send } from "@lucide/astro";
   .form-submit{
     background-color: rgba(243, 91, 4, 1);
     padding: 30px;
-    width: 60%;
+    width: 100%;
+    max-width: 520px;
     border-radius: 20px;
-    
+    box-sizing: border-box;
   }
 
   .form-submit label {
@@ -247,22 +265,61 @@ import { Phone, Mail, MapPin, Send } from "@lucide/astro";
   }
 
   .form-submit button{
-    display: flex;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 5%;
     margin-top: 5%;
     background-color: #011223;
-    width: 33%;
-    padding: 25px;
+    width: auto;
+    min-width: 120px;
+    min-height: 50px;
+    /* top right bottom left */
+    padding: 10px 14px 10px 0;
     border-radius: 25px;
     color: white;
     font-weight: bold;
+    gap: 12px;
   }
 
-  @media (min-width: 320px) and (max-width: 768px) {
+  @media (max-width: 900px) {
     .row {
-      display: flex;
       flex-direction: column;
+      padding: 24px;
+    }
+
+    .col-6 {
+      width: 100%;
+    }
+
+    .entitle {
+      max-width: 100%;
+    }
+
+    
+    .contact-title {
+      font-size: 32px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 24px;
+    }
+
+    .form-submit input,
+    .form-submit select,
+    .form-submit textarea {
+      width: 100%;
+      margin: 12px 0;
+    }
+
+    .form-submit button {
+      margin-left: 0;
+      width: 100%;
     }
   }
+
+
+ 
 
 </style>
