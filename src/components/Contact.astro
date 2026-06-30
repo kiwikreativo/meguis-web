@@ -1,92 +1,169 @@
 ---
-import { Phone, Mail } from "@lucide/astro";
+import { Phone, Mail, MapPin } from "@lucide/astro";
 ---
 
-<!-- Contact Form Section -->
-<section class="py-24 bg-surf relative" id="contact" style="background-color: #001021;">
-  <div class="container mx-auto px-8 md:px-12">
-    <div
-      class="max-w-4xl mx-auto bg-surface-container rounded-2xl overflow-hidden editorial-shadow flex flex-col md:flex-row"
-    >
-      <div
-        class="md:w-1/2 bg-brand-orange p-12 text-white flex flex-col justify-between" style="background-color: orangered; color: white; padding-left: 25px"
-      >
-        <div>
-          <h2 class="text-3xl font-serif font-bold mb-6">
-            Comencemos su Próxima Operación
-          </h2>
-          <p class="opacity-90 font-light">
-            Nuestros asesores están listos para diseñar su plan de logística
-            global.
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <div class="entitle">
+          <div class="mail-entitle" style="display: flex; align-items: center;">
+              <div class="icon-entitle">
+                <Mail size={12} />
+              </div>
+              <span class="data-entile">Comencemos</span>
+          </div>
+          <h1 class="contact-title">Construyamos su Futuro Logistico</h1>
+          <p class="entitle-text">
+            ¿Listo para optimizar sus operaciones? Complete el formulario y nos
+            pondremos en contacto con usted.
           </p>
         </div>
-        <div class="space-y-4 pt-12">
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined"><Phone /></span>
-            <span class="text-sm">+504 96380889</span>
+        <div class="contact-info">
+          <div class="group-1" style="display: flex; align-items: center;">
+            <div class="phone" style="display: flex; align-items: center;">
+              <div class="icon">
+                <Phone size={18} />
+              </div>
+              <span class="contact-data">+504 963808889</span>
+            </div>
+            <div class="mail" style="display: flex; align-items: center;">
+              <div class="icon">
+                <Mail size={18} />
+              </div>
+              <span class="contact-data">info@meguis.com</span>
+            </div>
           </div>
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined"><Mail /></span>
-            <span class="text-sm">carmen.cerna@meguis.net</span>
+          <div class="location" style="display: flex; align-items: center;">
+            <div class="icon">
+              <MapPin size={18} />
+            </div>
+            <span class="contact-data">San Pedro Sula, Honduras</span>
           </div>
         </div>
       </div>
-      <div class="md:w-2/3 p-12" style="background-color: rgba(47, 47, 47, 0.9);">
-        <form class="space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="space-y-2">
-              <label
-                class="text-xs font-medium uppercase tracking-wider text-on-surface-variant"
-                >Nombre Completo</label
-              >
-              <input
-                class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-brand-orange focus:ring-0 text-on-surface py-3"
-                type="text"
-              />
-            </div>
-            <div class="space-y-2">
-              <label
-                class="text-xs font-medium uppercase tracking-wider text-on-surface-variant"
-                >Email</label
-              >
-              <input
-                class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-brand-orange focus:ring-0 text-on-surface py-3"
-                type="email"
-              />
+      <div class="col-6">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
             </div>
           </div>
-          <div class="space-y-2">
-            <label
-              class="text-xs font-medium uppercase tracking-wider text-on-surface-variant"
-              >Servicio Requerido</label
-            >
-            <select
-              class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-brand-orange focus:ring-0 text-on-surface py-3"
-            >
-              <option>Importación/Exportación de Vehículos</option>
-              <option>Mercancías Comerciales</option>
-              <option>Consultoría Aduanera</option>
-              <option>Logística Integral</option>
-            </select>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
           </div>
-          <div class="space-y-2">
-            <label
-              class="text-xs font-medium uppercase tracking-wider text-on-surface-variant"
-              >Mensaje</label
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+            <label class="form-check-label" for="exampleCheck1"
+              >Check me out</label
             >
-            <textarea
-              class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-orangered-300 outline-none focus:ring-0 text-on-surface py-3 resize-none"
-              rows="3"></textarea>
           </div>
-          <button
-            class="w-full bg-brand-orange text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:brightness-110 transition-all mt-4"
-            style="background-color: orangered; color: white; padding: 1rem; border-radius: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;"
-            type="submit"
-          >
-            Enviar Mensaje
-          </button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<style>
+  .container-fluid {
+    width: 100%;
+    height: 85vh;
+    background-color: #011223;
+  }
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    background-color: #012f47;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 80%;
+    margin: 100px auto;
+  }
+
+  .entitle {
+    margin-top: 6%;
+    margin-left: 2%;
+    width: 60%;
+  }
+
+  .mail-entitle {
+    background-color: rgba(255, 183, 3, 0.1);
+    width: 130px;
+    border-radius: 50px;
+    padding: 5px;
+    border: 2px solid #e36414;
+    margin-bottom: 20px;
+  }
+
+  .data-entile {
+    font-size: 12px;
+    color: rgba(255, 183, 3, 1);
+  }
+
+  .icon-entitle {
+    background-color: #fefdfd;
+    color: black;
+    border-radius: 50%;
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+
+  .contact-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .entitle-text {
+    font-size: 14px;
+    color: grey;
+  }
+
+  .contact-info {
+    margin-top: 8%;
+    margin-left: 2%;
+    margin-bottom: 4%;
+  }
+
+  .group-1 {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 15px;
+  }
+
+  .icon {
+    background-color: #fefdfd;
+    color: black;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 10px;
+  }
+
+  .contact-data {
+    font-size: 13px;
+    color: white;
+  }
+</style>
