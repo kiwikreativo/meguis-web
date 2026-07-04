@@ -2,7 +2,7 @@
 import { Phone, Mail, MapPin, Send } from "@lucide/astro";
 ---
 
-<div class="container-fluid">
+<div class="container-fluid" id="contact">
   <div class="container">
     <div class="row">
       <div class="col-6">
@@ -43,11 +43,12 @@ Complete el formulario y nuestro equipo se pondrá en contacto con usted a la ma
         </div>
       </div>
       <div class="col-6 form-submit">
-        <form>
+        <form name="contact" data-netlify="true">
           <div class="mb-3">
             <label class="form-label">Nombre</label>
             <input
               type="text"
+              name="name"
               class="form-control"
               placeholder="John Doe"
             />
@@ -58,6 +59,7 @@ Complete el formulario y nuestro equipo se pondrá en contacto con usted a la ma
             >
             <input
               type="email"
+              name="email"
               class="form-control"
               aria-describedby="emailHelp"
               placeholder="johndoe@gmail.com"
@@ -66,11 +68,11 @@ Complete el formulario y nuestro equipo se pondrá en contacto con usted a la ma
           </div>
           <div class="mb-3 select-service">
             <label class="form-label">Servicio</label>
-            <select class="form-select" aria-label="Default Seleccione un servicio">
-              <option>Seleccione un servicio</option>
-              <option>Logística Integral</option>
-              <option>Transporte Terrestre</option>
-              <option>Asesoría Legal Aduanera</option>
+            <select class="form-select" aria-label="Default Seleccione un servicio" name="service[]" >
+              <option value="">Seleccione un servicio</option>
+              <option value="Logística Integral">Logística Integral</option>
+              <option value="Transporte Terrestre">Transporte Terrestre</option>
+              <option value="Asesoría Legal Aduanera">Asesoría Legal Aduanera</option>
             </select>
           </div>
           <div class="mb-3 message">
@@ -79,6 +81,7 @@ Complete el formulario y nuestro equipo se pondrá en contacto con usted a la ma
               class="form-control"
               rows="3"
               placeholder="Escriba su mensaje aquí..."
+              name="message"
             ></textarea>
           </div>
           <button type="submit" class="btn btn-primary"> 
@@ -110,7 +113,7 @@ Complete el formulario y nuestro equipo se pondrá en contacto con usted a la ma
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: #012f47;
+    background-color: #0b223f;
     color: white;
     padding: 20px;
     border-radius: 20px;
@@ -122,7 +125,7 @@ Complete el formulario y nuestro equipo se pondrá en contacto con usted a la ma
 
   .entitle {
     margin-top: 10%;
-    margin-left: 0;
+    margin-left: 5%;
     width: 100%;
     max-width: 560px;
   }
@@ -141,6 +144,7 @@ Complete el formulario y nuestro equipo se pondrá en contacto con usted a la ma
   .data-entile {
     font-size: 12px;
     color: rgba(255, 183, 3, 1);
+    margin-left: 5%;
   }
 
   .icon-entitle {
@@ -166,7 +170,7 @@ Complete el formulario y nuestro equipo se pondrá en contacto con usted a la ma
 
   .contact-info {
     margin-top: 60px;
-    margin-left: 0;
+    margin-left: 5%;
     margin-bottom: 24px;
   }
 
@@ -209,6 +213,7 @@ Complete el formulario y nuestro equipo se pondrá en contacto con usted a la ma
     max-width: 520px;
     border-radius: 20px;
     box-sizing: border-box;
+    margin-right: 2%;
   }
 
   .form-submit label {
