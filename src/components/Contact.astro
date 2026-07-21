@@ -1,0 +1,43 @@
+---
+import { Phone, Mail } from "@lucide/astro";
+---
+
+<!-- Contact Form Section -->
+<section class="py-24 bg-surf relative" id="contact" style="background-color: #001021;">
+  <div class="container mx-auto px-8 md:px-12">
+    <h1 class="title-contact">Envianos un mensaje de whatsapp con tu consulta</h1>
+    <a href="https://api.whatsapp.com/send?phone=50496380889" class="Whatcontact">Contactanos!</a>
+  </div>
+</section>
+
+<style>
+
+  .container {
+    background-color: #002a44 !important;
+    border-radius: 10px;
+    width: 80%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .title-contact {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0 15% 3rem;
+    width: 100%;
+  }
+
+  .Whatcontact{
+    background-color: white;
+    color: orange;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 5px;
+    margin: 0 auto;
+  }
+</style>

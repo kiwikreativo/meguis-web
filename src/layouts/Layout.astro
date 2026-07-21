@@ -1,37 +1,66 @@
 ---
-
 import "../assets/app.css";
 import MeguisIcon from "../assets/Meguis-Logo.ico";
-
+import Navbar from "../components/Navbar.astro";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href={MeguisIcon} />
-		<meta name="generator" content={Astro.generator} />
-		<title>Meguis</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Meguis Import & Export ofrece servicios especializados de logística, aduanas y transporte terrestre en Honduras. Soluciones integrales para comercio internacional con atención personalizada." />
+    <meta name="keywords" content="logística, aduanas, transporte terrestre, importación, exportación, Honduras, comercio internacional" />
+    <meta name="author" content="Meguis" />
+    <link rel="canonical" href="https://www.meguis.com/" />
+    <link rel="icon" href={MeguisIcon} />
+    <link rel="stylesheet" href="https://unpkg.com/aos@3.0.0-beta.6/dist/aos.css" />
+    <meta property="og:title" content="Meguis - Logística y Aduanas en Honduras" />
+    <meta property="og:description" content="Servicios expertos en aduanas, logística y manejo de mercancías para importación y exportación en Honduras." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.meguis.com/" />
+    <meta property="og:image" content="https://www.meguis.com/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Meguis - Logística y Aduanas en Honduras" />
+    <meta name="twitter:description" content="Servicios expertos en aduanas, logística y manejo de mercancías para importación y exportación en Honduras." />
+    <script
+      src="https://kit.fontawesome.com/509c179d58.js"
+      crossorigin="anonymous"></script>
+
+    <title>Meguis</title>
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <script type="module">
+      import AOS from 'https://unpkg.com/aos@3.0.0-beta.6/dist/aos.mjs';
+      
+      AOS.init({
+        duration: 800,
+        once: false,
+        offset: 100,
+        easing: 'ease-in-out'
+      });
+    </script>
+  </body>
 </html>
 
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #010d1c;
+    font-family: "Inter", sans-serif;
+  }
 
-	@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-	html,
-	body {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: 0;
-		padding: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #0B223F;
-		font-family: "Inter", sans-serif;
-	}
+  main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 </style>

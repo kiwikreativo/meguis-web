@@ -1,0 +1,75 @@
+---
+import { Star, type Icon as IconType } from "@lucide/astro";
+
+interface Comment {
+  name: string;
+  text: string;
+  icon: typeof IconType;
+}
+
+
+let comments: Comment[] = [
+  {
+    name: "Aldo Obregon",
+    text: "Los mejores en desaduanaje. 100% confiables/",
+    icon: Star, 
+  },
+  {
+    name: "Cesar Mayen",
+    text: "Rapidez en desaduanaje y sobretodo la comunicación",
+    icon: Star, 
+  },
+  {
+    name: "Guillermo Obando",
+    text: "Excelente Servicio y muy responsables. Me ayudaron con todo el proceso de importacion y nacionalizacion, siempre explicando cada paso. Se nota la experiencia en temas aduaneros, mut recomendados.",
+    icon: Star, 
+  },
+];
+---
+
+<section
+  class="py-24 bg-surface w-screen ml-[calc(-50vw+50%)]"
+  style="background-color: #001021;"
+>
+  <div class="container mx-auto px-8 md:px-12">
+    <div
+      class="flex flex-col justify-center items-center mb-16 gap-6 text-center"
+    >
+      <div class="max-w-2xl">
+        <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+          Testimonios de Clientes Satisfechos
+        </h2>
+        <p class="text-on-surface-variant text-xl">
+          Descubre por qué nuestros clientes confían en nosotros para sus
+          necesidades de transporte y logística en Honduras.
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      {comments.map((comment) => (
+        <div
+          class="card flex flex-col gap-4 p-6 rounded-xl bg-surface-container border border-white/5 hover:border-brand-orange/30 transition-all group"
+        >
+          <div class="flex items-center gap-2">
+            {[1, 2, 3, 4, 5].map((_, i) => (
+              <Star
+                size={20}
+                style="color: orangered; fill: orangered; stroke: orangered;"
+              />
+            ))}
+          </div>
+          <p class="text-sm text-on-surface-variant">{comment.text}</p>
+            <div class="card-footer">
+            <h4 class="font-bold text-on-surface">{comment.name}</h4>
+            </div>
+        </div>
+      ))}
+  </div>
+</section>
+
+<style>
+
+  .card {
+    border-left: 4px solid orangered;
+  }
+</style>
