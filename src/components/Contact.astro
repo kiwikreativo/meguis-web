@@ -5,88 +5,39 @@ import { Phone, Mail } from "@lucide/astro";
 <!-- Contact Form Section -->
 <section class="py-24 bg-surf relative" id="contact" style="background-color: #001021;">
   <div class="container mx-auto px-8 md:px-12">
-    <div
-      class="max-w-4xl mx-auto bg-surface-container rounded-2xl overflow-hidden editorial-shadow flex flex-col md:flex-row"
-    >
-      <div
-        class="md:w-1/2 bg-brand-orange p-12 text-white flex flex-col justify-between" style="background-color: orangered; color: white; padding-left: 25px"
-      >
-        <div>
-          <h2 class="text-3xl font-serif font-bold mb-6">
-            Comencemos su Próxima Operación
-          </h2>
-          <p class="opacity-90 font-light">
-            Nuestros asesores están listos para diseñar su plan de logística
-            global.
-          </p>
-        </div>
-        <div class="space-y-4 pt-12">
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined"><Phone /></span>
-            <span class="text-sm">+504 96380889</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined"><Mail /></span>
-            <span class="text-sm">carmen.cerna@meguis.net</span>
-          </div>
-        </div>
-      </div>
-      <div class="md:w-2/3 p-12" style="background-color: rgba(47, 47, 47, 0.9);">
-        <form class="space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="space-y-2">
-              <label
-                class="text-xs font-medium uppercase tracking-wider text-on-surface-variant"
-                >Nombre Completo</label
-              >
-              <input
-                class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-brand-orange focus:ring-0 text-on-surface py-3"
-                type="text"
-              />
-            </div>
-            <div class="space-y-2">
-              <label
-                class="text-xs font-medium uppercase tracking-wider text-on-surface-variant"
-                >Email</label
-              >
-              <input
-                class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-brand-orange focus:ring-0 text-on-surface py-3"
-                type="email"
-              />
-            </div>
-          </div>
-          <div class="space-y-2">
-            <label
-              class="text-xs font-medium uppercase tracking-wider text-on-surface-variant"
-              >Servicio Requerido</label
-            >
-            <select
-              class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-brand-orange focus:ring-0 text-on-surface py-3"
-            >
-              <option>Importación/Exportación de Vehículos</option>
-              <option>Mercancías Comerciales</option>
-              <option>Consultoría Aduanera</option>
-              <option>Logística Integral</option>
-            </select>
-          </div>
-          <div class="space-y-2">
-            <label
-              class="text-xs font-medium uppercase tracking-wider text-on-surface-variant"
-              >Mensaje</label
-            >
-            <textarea
-              class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-orangered-300 outline-none focus:ring-0 text-on-surface py-3 resize-none"
-              rows="3"></textarea>
-          </div>
-          <button
-            class="w-full bg-brand-orange text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:brightness-110 transition-all mt-4"
-            style="background-color: orangered; color: white; padding: 1rem; border-radius: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;"
-            type="submit"
-          >
-            Enviar Mensaje
-          </button>
-        </form>
-      </div>
-    </div>
+    <h1 class="title-contact">Envianos un mensaje de whatsapp con tu consulta</h1>
+    <a href="https://api.whatsapp.com/send?phone=50496380889" class="Whatcontact">Contactanos!</a>
   </div>
 </section>
+
+<style>
+
+  .container {
+    background-color: #002a44 !important;
+    border-radius: 10px;
+    width: 80%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .title-contact {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0 15% 3rem;
+    width: 100%;
+  }
+
+  .Whatcontact{
+    background-color: white;
+    color: orange;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 5px;
+    margin: 0 auto;
+  }
+</style>

@@ -12,25 +12,25 @@ import Meguis_logo from "../assets/Meguis-Logo.webp";
         data-alt="minimalist professional logo for MEGUIS customs agency featuring stylized geometric shapes and deep orange accents on a dark field"
         src={Meguis_logo.src}
       />
-      <span class="hidden md:block text-xl font-bold text-orange-500">MEGUIS</span>
+      <a href="#" class="hidden md:block text-xl font-bold text-orange-500">MEGUIS</a>
     </div>
     <div class="hidden md:flex gap-8 items-center">
       <a
-        class="font-sans text-s font-medium text-orange-400 border-b-2 border-orange-500 pb-1 transition-all"
-        href="#">Servicios</a
+        class="nav-link font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
+        href="#servicios">Servicios</a
       >
       <a
-        class="font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
-        href="#">Sobre Nosotros</a
+        class="nav-link font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
+        href="#legado">Sobre Nosotros</a
       >
       <a
-        class="font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
-        href="#">Cómo Funciona</a
+        class="nav-link font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
+        href="#proceso">Cómo Funciona</a
       >
-      <a
-        class="font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
+      <!-- <a
+        class="nav-link font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
         href="#">Preguntas Frecuentes</a
-      >
+      > -->
     </div>
     <button
       class="btn-cotizar" onclick="window.location.href='#contact'"
@@ -52,6 +52,11 @@ import Meguis_logo from "../assets/Meguis-Logo.webp";
         margin-right: 10px;
     }
 
+    .nav-link.active {
+      color: #fb923c;
+      border-bottom: 2px solid #f97316;
+      padding-bottom: 0.25rem;
+    }
 
     @media (max-width: 768px) {
         .btn-cotizar {
@@ -60,3 +65,67 @@ import Meguis_logo from "../assets/Meguis-Logo.webp";
         }
     }
 </style>
+
+<script>
+  const initNavbarActiveLink = () => {
+    const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+    const sections = Array.from(navLinks)
+      .map((link) => {
+        const href = link.getAttribute('href');
+        return href && href.startsWith('#') ? document.getElementById(href.slice(1)) : null;
+      })
+      .filter((section): section is HTMLElement => section !== null);
+
+    const clearActive = () => {
+      navLinks.forEach((link) => link.classList.remove('active'));
+    };
+
+    const setActive = (link: HTMLAnchorElement) => {
+      clearActive();
+      link.classList.add('active');
+    };
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => setActive(link));
+    });
+
+    if (sections.length > 0 && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const activeLink = document.querySelector<HTMLAnchorElement>(`.nav-link[href="#${entry.target.id}"]`);
+            if (activeLink) {
+              setActive(activeLink);
+            }
+          });
+        },
+        {
+          rootMargin: '-40% 0% -55% 0%',
+          threshold: 0.1,
+        }
+      );
+
+      sections.forEach((section) => observer.observe(section));
+    }
+
+    const hash = window.location.hash;
+    if (hash) {
+      const initialLink = document.querySelector<HTMLAnchorElement>(`.nav-link[href="${hash}"]`);
+      if (initialLink) {
+        setActive(initialLink);
+        return;
+      }
+    }
+
+    if (navLinks.length > 0) {
+      setActive(navLinks[0]);
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavbarActiveLink);
+  } else {
+    initNavbarActiveLink();
+  }
+</script>
