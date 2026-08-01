@@ -2,41 +2,153 @@
 import { Phone, Mail } from "@lucide/astro";
 ---
 
-<!-- Contact Form Section -->
-<section class="py-24 bg-surf relative" id="contact" style="background-color: #001021;">
-  <div class="container mx-auto px-8 md:px-12">
-    <h1 class="title-contact">Solicite una cotización de transporte, despacho aduanero o logística en Honduras</h1>
-    <a href="https://api.whatsapp.com/send?phone=50496380889" class="Whatcontact">Contactanos!</a>
+<section class="contact-section" id="contact">
+  <div class="contact-card container mx-auto px-8 md:px-12">
+    <div class="contact-copy">
+      <span class="contact-eyebrow">Hablemos de su carga</span>
+      <h2 class="title-contact">¿Necesita apoyo con su importación?</h2>
+      <p class="contact-description">
+        Cuéntenos qué necesita y le ayudaremos a coordinar el despacho aduanero,
+        transporte y logística integral desde Puerto Cortés.
+      </p>
+    </div>
+    <div class="contact-action">
+      <a href="https://api.whatsapp.com/send?phone=50496380889" class="Whatcontact">
+        <span>Solicitar cotización</span>
+        <span aria-hidden="true">→</span>
+      </a>
+      <span class="contact-note">Respuesta directa por WhatsApp</span>
+    </div>
   </div>
 </section>
 
 <style>
-  .container {
-    background-color: #002a44 !important;
-    border-radius: 10px;
-    width: 80%;
-    padding: 50px;
+  .contact-section {
+    padding: 6rem 1.5rem;
+    background: #010d1c;
+  }
+
+  .contact-card {
     display: flex;
-    flex-direction: column;
-    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    max-width: 1280px;
+    background: linear-gradient(120deg, #002a44, #003653);
+    border-radius: 10px;
+    padding: 4.5rem clamp(2rem, 7vw, 7rem);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card::after {
+    content: "";
+    position: absolute;
+    width: 18rem;
+    height: 18rem;
+    right: -7rem;
+    bottom: -10rem;
+    border: 1px solid rgba(255, 69, 0, 0.35);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2rem rgba(255, 69, 0, 0.06), 0 0 0 4rem rgba(255, 69, 0, 0.04);
+    pointer-events: none;
+  }
+
+  .contact-copy,
+  .contact-action {
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-copy {
+    max-width: 700px;
+  }
+
+  .contact-eyebrow {
+    display: block;
+    color: #ff6b35;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
   }
 
   .title-contact {
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    font-weight: 700;
-    line-height: 1.2;
     color: #ffffff;
-    margin: 0 15% 3rem;
-    width: 100%;
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.08;
+    margin: 0;
   }
 
-  .Whatcontact{
-    background-color: white;
-    color: orange;
-    padding: 10px 20px;
-    text-transform: uppercase;
+  .contact-description {
+    color: #bfd0dc;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 1.5rem 0 0;
+    max-width: 590px;
+  }
+
+  .contact-action {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .Whatcontact {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: orangered;
+    border: 1px solid orangered;
+    border-radius: 0.75rem;
+    color: #ffffff;
+    padding: 1rem 1.35rem 1rem 1.5rem;
     font-weight: 700;
-    border-radius: 5px;
-    margin: 0 auto;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .Whatcontact:hover {
+    background: #e63e00;
+    transform: translateY(-2px);
+  }
+
+  .Whatcontact span:last-child {
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .contact-note {
+    color: #9fb5c4;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 4rem 1rem;
+    }
+
+    .contact-card {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 2.5rem;
+      padding: 3rem 1.5rem;
+    }
+
+    .contact-action {
+      align-items: flex-start;
+    }
+
+    .Whatcontact {
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 </style>
