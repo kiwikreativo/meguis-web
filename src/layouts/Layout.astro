@@ -2,14 +2,35 @@
 import "../assets/app.css";
 import MeguisIcon from "../assets/Meguis-Logo.ico";
 import Navbar from "../components/Navbar.astro";
-import ogImage from "../public/og-image.webp";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogUrl?: string;
+  ogImage?: string;
+  structuredData?: Record<string, unknown>;
+}
+
+const {
+  title = "Agencia Aduanera en Puerto Cortés, Honduras | Meguis",
+  description = "Meguis Import & Export es una agencia aduanera ubicada en Puerto Cortés, Honduras que ofrece servicios de despacho aduanero, logística integral y transporte terrestre de carga",
+  canonical = "https://www.meguis.net/",
+  ogTitle = "Meguis - Logística y Aduanas en Honduras",
+  ogDescription = "Servicios expertos en aduanas, logística y manejo de mercancías para importación y exportación en Honduras.",
+  ogUrl = canonical,
+  ogImage = "https://www.meguis.net/og-image.webp",
+  structuredData: pageStructuredData,
+} = Astro.props;
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": "https://meguis.net/#business",
   name: "Meguis Import & Export",
-  url: "https://meguis.net/",
+  url: "https://www.meguis.net/",
   telephone: "+504 96380889",
   address: {
     "@type": "PostalAddress",
@@ -48,6 +69,8 @@ const structuredData = {
     ],
   },
 };
+
+const resolvedStructuredData = pageStructuredData ?? structuredData;
 ---
 
 <!doctype html>
@@ -55,23 +78,23 @@ const structuredData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Meguis Import & Export es una agencia aduanera ubicada en Puerto Cortés, Honduras que ofrece servicios de despacho aduanero, logística integral y transporte terrestre de carga" />
+    <meta name="description" content={description} />
     <meta name="keywords" content="Agencia aduanera en Puerto Cortés, Honduras, con despacho aduanero, logística integral, transporte terrestre de carga" />
     <meta name="author" content="Meguis | Logística, Aduanas y tranporte en Honduras." />
-    <link rel="canonical" href="https://www.meguis.net/" />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href={MeguisIcon} />
     <link rel="stylesheet" href="https://unpkg.com/aos@3.0.0-beta.6/dist/aos.css" />
-    <meta property="og:title" content="Meguis - Logística y Aduanas en Honduras" />
-    <meta property="og:description" content="Servicios expertos en aduanas, logística y manejo de mercancías para importación y exportación en Honduras." />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.meguis.net/og-image.webp" />
-    <meta property="og:image" content="../public/og-image.webp" /> 
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(resolvedStructuredData)}></script>
     <script
       src="https://kit.fontawesome.com/509c179d58.js"
       crossorigin="anonymous"></script>
 
-    <title>Agencia Aduanera en Puerto Cortés, Honduras | Meguis</title>
+    <title>{title}</title>
   </head>
   <body>
     <Navbar />

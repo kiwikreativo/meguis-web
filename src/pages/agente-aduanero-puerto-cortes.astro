@@ -1,0 +1,393 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.meguis.net/agente-aduanero-puerto-cortes/#business",
+  name: "Meguis Import & Export",
+  url: "https://www.meguis.net/agente-aduanero-puerto-cortes/",
+  image: "https://www.meguis.net/og-image.webp",
+  telephone: "+504 96380889",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "R3W2+7W5, 2 Avenida",
+    addressLocality: "Puerto Cortés",
+    addressRegion: "Cortés",
+    addressCountry: "HN",
+  },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Puerto Cortés",
+    },
+    {
+      "@type": "Country",
+      name: "Honduras",
+    },
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "08:00",
+      closes: "12:00",
+    },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios de logística integral y aduanas",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Despacho aduanero en Puerto Cortés",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Logística integral para importaciones a Honduras",
+        },
+      },
+    ],
+  },
+};
+
+const faqs = [
+  {
+    question: "¿Qué hace un agente aduanero en Puerto Cortés?",
+    answer:
+      "Un agente aduanero gestiona la documentación, los trámites de importación y el despacho de mercancías ante las autoridades correspondientes, para que la carga pueda continuar hacia su destino en Honduras.",
+  },
+  {
+    question: "¿Pueden ayudarme a importar mercancía a Honduras?",
+    answer:
+      "Sí. Atendemos a personas y empresas que necesitan importar mercancías a Honduras, coordinando la gestión aduanera y la logística integral desde Puerto Cortés.",
+  },
+  {
+    question: "¿En qué lugar atiende Meguis?",
+    answer:
+      "Nuestra oficina está ubicada en R3W2+7W5, 2 Avenida, Puerto Cortés, Cortés, Honduras. Podemos atender necesidades de importación de clientes en cualquier parte del país.",
+  },
+];
+---
+
+<Layout
+  title="Agente Aduanero en Puerto Cortés, Honduras | Meguis"
+  description="Agente aduanero en Puerto Cortés para despacho de mercancías, importaciones y logística integral hacia cualquier destino de Honduras. Solicite asesoría a Meguis."
+  canonical="https://www.meguis.net/agente-aduanero-puerto-cortes/"
+  ogTitle="Agente Aduanero en Puerto Cortés | Meguis"
+  ogDescription="Despacho aduanero y logística integral desde Puerto Cortés para importar mercancías a Honduras."
+  ogUrl="https://www.meguis.net/agente-aduanero-puerto-cortes/"
+  structuredData={businessSchema}
+>
+  <div class="seo-page">
+    <section class="seo-hero">
+      <div class="container mx-auto px-8 md:px-12">
+        <div class="max-w-3xl">
+          <span class="eyebrow">Puerto Cortés, Honduras</span>
+          <h1>Agente aduanero en Puerto Cortés para sus importaciones</h1>
+          <p class="lead">
+            En Meguis coordinamos el despacho aduanero y la logística integral
+            de mercancías que llegan a Honduras a través de Puerto Cortés.
+            Acompañamos a personas y empresas desde la documentación hasta la
+            entrega en su destino.
+          </p>
+          <div class="actions">
+            <a class="primary-action" href="https://api.whatsapp.com/send?phone=50496380889">
+              Solicitar asesoría
+            </a>
+            <a class="secondary-action" href="#servicios">Conocer servicios</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="servicios">
+      <div class="container mx-auto px-8 md:px-12">
+        <div class="section-heading">
+          <span class="eyebrow">Logística integral</span>
+          <h2>Gestión aduanera clara y acompañamiento en cada etapa</h2>
+          <p>
+            Puerto Cortés es el punto de entrada de muchas mercancías destinadas
+            a Honduras. Nuestro equipo coordina el proceso aduanero y logístico
+            para que usted tenga claridad sobre los requisitos y el avance de su
+            carga.
+          </p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <h3>Despacho aduanero</h3>
+            <p>
+              Apoyo con la documentación, revisión del proceso y coordinación
+              necesaria para nacionalizar mercancías en Honduras.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>Logística integral</h3>
+            <p>
+              Coordinamos la gestión aduanera, el transporte y el seguimiento de
+              su carga desde Puerto Cortés hasta su destino final.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>Asesoría para importar</h3>
+            <p>
+              Orientación para personas y empresas que desean importar productos
+              a Honduras y necesitan entender los pasos del proceso.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="location-section">
+      <div class="container mx-auto px-8 md:px-12 location-grid">
+        <div>
+          <span class="eyebrow">Atención local</span>
+          <h2>Su agente aduanero en Puerto Cortés</h2>
+          <p>
+            Estamos ubicados en el centro de Puerto Cortés y atendemos consultas
+            de importación desde cualquier parte de Honduras o de personas que
+            desean traer mercancía al país.
+          </p>
+        </div>
+        <address class="contact-card">
+          <strong>Meguis Import &amp; Export</strong>
+          <span>R3W2+7W5, 2 Avenida</span>
+          <span>Puerto Cortés, Cortés, Honduras</span>
+          <span>Lunes a viernes: 8:00 AM - 5:00 PM</span>
+          <span>Sábado: 8:00 AM - 12:00 PM</span>
+          <a href="tel:+50496380889">+504 9638-0889</a>
+        </address>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="container mx-auto px-8 md:px-12">
+        <div class="section-heading">
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2>Información para importar a Honduras</h2>
+        </div>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <article class="faq-item">
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container mx-auto px-8 md:px-12">
+        <h2>¿Necesita importar mercancía a Honduras?</h2>
+        <p>Conversemos sobre su carga y el apoyo aduanero que necesita.</p>
+        <a class="primary-action" href="https://api.whatsapp.com/send?phone=50496380889">
+          Contactar por WhatsApp
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .seo-page {
+    color: #f8fafc;
+    background: #010d1c;
+  }
+
+  .seo-hero,
+  .location-section,
+  .final-cta {
+    background: #001021;
+  }
+
+  .seo-hero {
+    padding: 11rem 0 8rem;
+    background-image: linear-gradient(90deg, rgba(0, 16, 33, 0.98), rgba(0, 16, 33, 0.74)), url("https://images.unsplash.com/photo-1622521186574-8276b00bdc96?q=80&w=1600&auto=format&fit=crop");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .eyebrow {
+    display: block;
+    margin-bottom: 1rem;
+    color: orangered;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: Georgia, serif;
+  }
+
+  h1 {
+    max-width: 850px;
+    margin: 0;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    line-height: 1.05;
+  }
+
+  h2 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+  }
+
+  .lead,
+  .section-heading > p,
+  .location-grid p,
+  .final-cta p {
+    color: #b7c2d1;
+    font-size: 1.15rem;
+    line-height: 1.8;
+  }
+
+  .lead {
+    max-width: 700px;
+    margin: 2rem 0 0;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .primary-action,
+  .secondary-action {
+    display: inline-block;
+    border-radius: 0.75rem;
+    padding: 0.9rem 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .primary-action {
+    background: orangered;
+    color: white;
+  }
+
+  .secondary-action {
+    border: 1px solid #64748b;
+    color: white;
+  }
+
+  .content-section,
+  .faq-section {
+    padding: 7rem 0;
+  }
+
+  .section-heading {
+    max-width: 760px;
+    margin-bottom: 3.5rem;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .service-card,
+  .contact-card,
+  .faq-item {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    background: #001a2d;
+    padding: 2rem;
+  }
+
+  .service-card {
+    border-top: 3px solid orangered;
+  }
+
+  .service-card h3,
+  .faq-item h3 {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+  }
+
+  .service-card p,
+  .faq-item p {
+    margin: 0;
+    color: #b7c2d1;
+    line-height: 1.7;
+  }
+
+  .location-section {
+    padding: 7rem 0;
+  }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    color: #dbe5ef;
+    font-style: normal;
+    line-height: 1.5;
+  }
+
+  .contact-card a {
+    color: orangered;
+    font-weight: 700;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+  }
+
+  .faq-item h3 {
+    font-family: Inter, sans-serif;
+    font-size: 1.1rem;
+  }
+
+  .final-cta {
+    padding: 6rem 0;
+    text-align: center;
+  }
+
+  .final-cta p {
+    margin: 0 0 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .seo-hero {
+      padding: 9rem 0 6rem;
+    }
+
+    .service-grid,
+    .location-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .location-grid {
+      gap: 2rem;
+    }
+  }
+</style>
