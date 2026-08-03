@@ -1,6 +1,5 @@
 ---
 import "../assets/app.css";
-import MeguisIcon from "../assets/Meguis-Logo.ico";
 import Navbar from "../components/Navbar.astro";
 
 interface Props {
@@ -79,17 +78,32 @@ const resolvedStructuredData = pageStructuredData ?? structuredData;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="keywords" content="Agencia aduanera en Puerto Cortés, Honduras, con despacho aduanero, logística integral, transporte terrestre de carga" />
-    <meta name="author" content="Meguis | Logística, Aduanas y tranporte en Honduras." />
+    <meta
+      name="keywords"
+      content="Agencia aduanera en Puerto Cortés, Honduras, con despacho aduanero, logística integral, transporte terrestre de carga"
+    />
+    <meta
+      name="author"
+      content="Meguis | Logística, Aduanas y tranporte en Honduras."
+    />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href={MeguisIcon} />
-    <link rel="stylesheet" href="https://unpkg.com/aos@3.0.0-beta.6/dist/aos.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/aos@3.0.0-beta.6/dist/aos.css"
+    />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={ogUrl} />
     <meta property="og:image" content={ogImage} />
-    <script type="application/ld+json" set:html={JSON.stringify(resolvedStructuredData)}></script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(resolvedStructuredData)}
+    />
     <script
       src="https://kit.fontawesome.com/509c179d58.js"
       crossorigin="anonymous"></script>
@@ -102,13 +116,13 @@ const resolvedStructuredData = pageStructuredData ?? structuredData;
       <slot />
     </main>
     <script type="module">
-      import AOS from 'https://unpkg.com/aos@3.0.0-beta.6/dist/aos.mjs';
-      
+      import AOS from "https://unpkg.com/aos@3.0.0-beta.6/dist/aos.mjs";
+
       AOS.init({
         duration: 800,
         once: false,
         offset: 100,
-        easing: 'ease-in-out'
+        easing: "ease-in-out",
       });
     </script>
   </body>
