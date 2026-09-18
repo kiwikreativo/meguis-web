@@ -1,0 +1,128 @@
+---
+import { ArrowRight, ArrowUpRight, Scale, Ship, Truck } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "./Footer.astro";
+import { services, type ServiceDefinition } from "../data/services";
+
+interface Props { service: ServiceDefinition; }
+const { service } = Astro.props;
+const icons = { ship: Ship, truck: Truck, scale: Scale };
+const Icon = icons[service.icon];
+const related = services.filter((item) => item.slug !== service.slug);
+const whatsapp = "https://api.whatsapp.com/send?phone=50496380889&text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20despacho%20aduanero%20y%20log%C3%ADstica%20integral.";
+const canonical = `https://www.meguis.net/${service.slug}/`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${canonical}#service`,
+  name: service.title,
+  description: service.metaDescription,
+  url: canonical,
+  areaServed: { "@type": "Country", name: "Honduras" },
+  provider: {
+    "@type": "ProfessionalService",
+    "@id": "https://www.meguis.net/#business",
+    name: "Meguis Import & Export",
+    url: "https://www.meguis.net/",
+    telephone: "+504 96380889",
+  },
+};
+const process = [
+  ["Cuéntanos sobre tu operación", "Comparta con nosotros el origen, destino y las necesidades de su carga."],
+  ["Revisamos los requerimientos", "Identificamos los pasos y la información necesaria para coordinar el servicio."],
+  ["Coordinamos el proceso", "Organizamos las etapas correspondientes y mantenemos la comunicación activa."],
+  ["Damos seguimiento", "Le acompañamos durante el avance de la operación hasta su cierre."],
+];
+---
+<Layout title={`${service.title} | Meguis`} description={service.metaDescription} canonical={canonical} ogTitle={`${service.title} | Meguis`} ogDescription={service.metaDescription} ogUrl={canonical} structuredData={structuredData}>
+  <main class="service-page" id="inicio">
+    <section class="service-hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy" data-reveal>
+          <div class="service-mark"><Icon size={30} stroke-width={1.6} aria-hidden="true"/><span>Servicios / {service.number}</span></div>
+          <h1>{service.title}</h1>
+          <p>{service.description}</p>
+          <a class="button primary" href={whatsapp} target="_blank" rel="noreferrer">Solicitar información <ArrowUpRight size={18} aria-hidden="true"/></a>
+        </div>
+        <div class="hero-image-wrap" data-reveal>
+          <img src={service.image.src} width={service.image.width} height={service.image.height} alt={service.imageAlt} style={`object-position:${service.imagePosition ?? "center"}`} />
+          <span aria-hidden="true">{service.number}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="overview section light" data-reveal-section>
+      <div class="shell overview-grid" data-reveal>
+        <p class="kicker">Sobre el servicio</p>
+        <div><h2>{service.overviewTitle}</h2>{service.overview.map((paragraph) => <p>{paragraph}</p>)}</div>
+      </div>
+    </section>
+
+    <section class="capabilities section light" data-reveal-section>
+      <div class="shell" data-reveal>
+        <h2>¿Qué incluye este servicio?</h2>
+        <div class="capability-grid">{service.capabilities.map((item, index) => <article><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
+      </div>
+    </section>
+
+    <section class="work section" data-reveal-section>
+      <div class="shell" data-reveal>
+        <h2>¿Cómo trabajamos?</h2>
+        <div class="process-grid">{process.map((item, index) => <article><span>{String(index + 1).padStart(2, "0")}</span><h3>{item[0]}</h3><p>{item[1]}</p></article>)}</div>
+      </div>
+    </section>
+
+    <section class="benefits section" data-reveal-section>
+      <div class="shell" data-reveal>
+        <h2>Una operación más clara,<br/>de principio a fin.</h2>
+        <div class="benefit-grid">{service.benefits.map((item) => <article><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
+      </div>
+    </section>
+
+    <section class="related section light" data-reveal-section>
+      <div class="shell" data-reveal>
+        <div class="related-heading"><h2>Otros servicios para su operación.</h2><p>Conozca las soluciones que pueden complementar el movimiento de su carga.</p></div>
+        <div class="related-grid">{related.map((item) => { const RelatedIcon = icons[item.icon]; return <a href={`/${item.slug}/`}><RelatedIcon size={28} stroke-width={1.6} aria-hidden="true"/><span>{item.number}</span><h3>{item.title}</h3><p>{item.description}</p><strong>Ver servicio <ArrowRight size={17} aria-hidden="true"/></strong></a> })}</div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="contacto" data-reveal-section>
+      <div class="shell cta-panel" data-reveal>
+        <p class="kicker">Hablemos de su carga</p>
+        <h2>¿Necesita apoyo con su próxima importación?</h2>
+        <p>Cuéntenos sobre su operación y conversemos sobre cómo podemos ayudarle.</p>
+        <a class="button light-button" href={whatsapp} target="_blank" rel="noreferrer">Solicitar información <ArrowUpRight size={18} aria-hidden="true"/></a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import gsap from "gsap";
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    gsap.from(".service-hero [data-reveal]", { y: 28, opacity: 0, duration: .85, stagger: .1, ease: "power3.out", delay: .12 });
+    document.querySelectorAll<HTMLElement>("[data-reveal-section]").forEach((section) => {
+      const target = section.querySelector<HTMLElement>("[data-reveal]");
+      if (!target) return;
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry?.isIntersecting) return;
+        gsap.fromTo(target, { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: .75, ease: "power3.out" });
+        observer.disconnect();
+      }, { threshold: .14 });
+      observer.observe(section);
+    });
+  }
+</script>
+
+<style>
+  .service-page{--navy:#010d1c;--deep:#001021;--blue:#0a2942;--orange:#ff4b17;--coral:#e76f51;--paper:#eef1ed;overflow:hidden;background:var(--navy);color:#f6f7f8}.shell{width:min(calc(100% - 32px),1410px);margin-inline:auto}.section{padding:clamp(6.5rem,11vw,11rem) 0}.light{background:var(--paper);color:#071625}.kicker{margin:0;color:var(--orange);font-size:.72rem;font-weight:750;letter-spacing:.18em;text-transform:uppercase}.service-page h1,.service-page h2,.service-page h3,.service-page p{margin-top:0}.service-page h1,.service-page h2,.service-page h3{letter-spacing:-.045em}.button{display:inline-flex;align-items:center;justify-content:center;gap:22px;width:max-content;min-height:55px;padding:0 22px;border:1px solid transparent;border-radius:12px;color:#fff;font-size:.93rem;font-weight:720;text-decoration:none;white-space:nowrap;transition:transform .25s ease,background .25s ease}.button:hover{transform:translateY(-3px)}.button:focus-visible,.related-grid a:focus-visible{outline:3px solid #fff;outline-offset:4px}.primary{background:var(--orange);color:var(--navy)}
+  .service-hero{min-height:100svh;padding:clamp(7.5rem,12vh,9rem) 0 3rem;background:var(--navy)}.hero-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(420px,.7fr);align-items:center;gap:clamp(3rem,7vw,8rem);min-height:calc(100svh - 10.5rem)}.hero-copy{max-width:760px}.service-mark{display:flex;align-items:center;gap:16px;margin-bottom:clamp(1.8rem,4vh,3rem);color:#ff754c}.service-mark span{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.service-hero h1{margin-bottom:28px;font-size:clamp(3.15rem,6vw,6.4rem);font-weight:540;line-height:.94}.hero-copy>p{max-width:610px;margin-bottom:32px;color:#aebdca;font-size:clamp(1rem,1.4vw,1.18rem);line-height:1.65}.hero-image-wrap{position:relative;overflow:hidden;height:min(68vh,760px);min-height:480px;border-radius:20px;background:var(--blue)}.hero-image-wrap:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#010d1c99)}.hero-image-wrap img{width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.08)}.hero-image-wrap>span{position:absolute;z-index:2;right:28px;bottom:22px;color:#fff;font-size:clamp(3rem,6vw,6.5rem);font-weight:300;letter-spacing:-.08em}
+  .overview{padding-bottom:clamp(4.5rem,8vw,8rem)}.overview-grid{display:grid;grid-template-columns:1fr 3fr;gap:clamp(3rem,8vw,9rem)}.overview h2{max-width:900px;margin-bottom:36px;font-size:clamp(2.5rem,4.5vw,5rem);font-weight:520;line-height:1}.overview div>p{max-width:720px;margin-bottom:18px;color:#43515b;font-size:1.08rem;line-height:1.75}.capabilities{padding-top:0}.capabilities h2,.work h2{max-width:850px;margin-bottom:clamp(3rem,6vw,6rem);font-size:clamp(2.5rem,4.6vw,5rem);font-weight:520;line-height:1}.capability-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #aeb9bc}.capability-grid article{min-height:310px;padding:30px clamp(18px,2.4vw,36px) 20px;border-right:1px solid #aeb9bc}.capability-grid article:first-child{padding-left:0}.capability-grid article:last-child{border-right:0}.capability-grid span,.process-grid span{color:var(--orange);font-size:.76rem;font-weight:700}.capability-grid h3{margin:70px 0 18px;font-size:clamp(1.45rem,2vw,2.2rem);font-weight:600;line-height:1.08}.capability-grid p{color:#52606a;line-height:1.65}
+  .work{background:#e4e7e3;color:#071625}.process-grid{display:grid;grid-template-columns:repeat(4,1fr)}.process-grid article{position:relative;padding:28px 32px 0 0;border-top:1px solid #9ca9ad}.process-grid article:not(:last-child):after{content:"";position:absolute;top:-4px;right:0;width:7px;height:7px;border-radius:50%;background:var(--orange)}.process-grid h3{margin:52px 0 16px;font-size:clamp(1.35rem,2vw,2rem);font-weight:600;line-height:1.12}.process-grid p{max-width:260px;color:#52606a;line-height:1.65}.benefits{background:#06192b}.benefits h2{max-width:1000px;margin-bottom:clamp(4rem,8vw,8rem);font-size:clamp(3rem,6vw,6.6rem);font-weight:520;line-height:.95}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ffffff24}.benefit-grid article{min-height:250px;padding:clamp(28px,4vw,55px);background:#06192b}.benefit-grid h3{margin-bottom:50px;color:#ff754c;font-size:clamp(1.5rem,2.3vw,2.6rem);font-weight:580}.benefit-grid p{max-width:360px;margin:0;color:#a6b5c1;line-height:1.7}
+  .related-heading{display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:end;margin-bottom:60px}.related-heading h2{max-width:800px;margin:0;font-size:clamp(2.6rem,4.5vw,5rem);font-weight:520;line-height:1}.related-heading p{max-width:390px;margin:0;color:#52606a;line-height:1.7}.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;overflow:hidden;border-radius:20px;background:#aeb9bc}.related-grid a{position:relative;display:flex;flex-direction:column;min-height:440px;padding:clamp(30px,4vw,58px);background:var(--deep);color:#fff;text-decoration:none;transition:background .3s ease}.related-grid a:hover{background:var(--blue)}.related-grid a>span{position:absolute;top:clamp(30px,4vw,58px);right:clamp(30px,4vw,58px);color:#91a5b4;font-size:.75rem}.related-grid h3{max-width:520px;margin:80px 0 18px;font-size:clamp(2rem,3.4vw,3.8rem);font-weight:540;line-height:1}.related-grid p{max-width:520px;color:#aebdca;line-height:1.65}.related-grid strong{display:flex;align-items:center;gap:10px;margin-top:auto;color:#ff754c;font-size:.88rem}
+  .final-cta{padding:0 0 clamp(6.5rem,11vw,11rem);background:var(--navy)}.cta-panel{position:relative;overflow:hidden;padding:clamp(55px,8vw,120px);border-radius:24px;background:var(--coral);color:var(--navy)}.cta-panel:after{content:"";position:absolute;width:520px;height:520px;right:-190px;bottom:-320px;border:1px solid #010d1c52;border-radius:50%;box-shadow:0 0 0 68px #010d1c0b,0 0 0 136px #010d1c09}.cta-panel .kicker{color:var(--navy)}.cta-panel h2{position:relative;z-index:1;max-width:980px;margin:24px 0;font-size:clamp(2.8rem,5.5vw,6rem);font-weight:560;line-height:.97}.cta-panel>p:not(.kicker){position:relative;z-index:1;max-width:620px;color:#102235;font-size:1.06rem;line-height:1.7}.light-button{position:relative;z-index:1;margin-top:24px;background:#f7f4ee;color:#061524}
+  @media(max-width:900px){.section{padding:7rem 0}.hero-grid,.overview-grid{grid-template-columns:1fr}.service-hero{padding-bottom:5rem}.hero-grid{min-height:auto;gap:3.5rem}.hero-image-wrap{height:62vw;min-height:470px}.capability-grid,.process-grid{grid-template-columns:repeat(2,1fr)}.capability-grid article:nth-child(2){border-right:0}.capability-grid article:nth-child(-n+2){border-bottom:1px solid #aeb9bc}.process-grid{gap:3rem 0}.benefit-grid{grid-template-columns:1fr}.related-heading{grid-template-columns:1fr}.related-grid a{min-height:390px}}
+  @media(max-width:620px){.shell{width:min(calc(100% - 24px),1410px)}.service-hero{min-height:0;padding-top:7.5rem}.service-hero h1{font-size:clamp(3rem,14vw,4.7rem)}.hero-image-wrap{height:125vw;min-height:430px}.capability-grid,.process-grid,.related-grid{grid-template-columns:1fr}.capability-grid article{min-height:250px;padding:28px 0;border-right:0;border-bottom:1px solid #aeb9bc}.capability-grid article:last-child{border-bottom:0}.capability-grid h3{margin-top:45px}.process-grid{gap:36px}.process-grid article{padding-right:0}.process-grid article:not(:last-child):after{display:none}.benefits h2 br{display:none}.related-grid a{min-height:360px}.related-heading{gap:1.5rem}.button{width:100%}.cta-panel{border-radius:18px}}
+  @media(prefers-reduced-motion:reduce){.button,.related-grid a{transition:none}}
+</style>
