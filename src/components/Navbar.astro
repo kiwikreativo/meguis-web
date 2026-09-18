@@ -1,131 +1,16 @@
-
 ---
-import Meguis_logo from "../assets/Meguis-Logo.webp";
+import MeguisLogo from "../assets/Meguis-Logo.webp";
 ---
-  <nav
-    class=" fixed top-0 w-full z-50 bg-slate-900/60 backdrop-blur-xl shadow-2xl shadow-black/40 flex justify-between items-center px-3 py-4 max-w-full mx-auto"
-  >
-    <div class="flex items-center gap-2">
-      <img
-        alt="MEGUIS Logo"
-        class="h-20 w-auto"
-        data-alt="minimalist professional logo for MEGUIS customs agency featuring stylized geometric shapes and deep orange accents on a dark field"
-        src={Meguis_logo.src}
-      />
-      <a href="/" class="hidden md:block text-xl font-bold text-orange-500">MEGUIS</a>
-    </div>
-    <div class="hidden md:flex gap-8 items-center">
-      <a
-        class="nav-link font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
-        href="#servicios">Servicios</a
-      >
-      <a
-        class="nav-link font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
-        href="#legado">Sobre Nosotros</a
-      >
-      <a
-        class="nav-link font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
-        href="#proceso">Cómo Funciona</a
-      >
-      <!-- <a
-        class="nav-link font-sans text-s font-medium text-slate-300 hover:text-white transition-colors"
-        href="#">Preguntas Frecuentes</a
-      > -->
-    </div>
-    <button
-      class="btn-cotizar" onclick="window.location.href='#contact'"
-    >
-      Solicitar Cotización
-    </button>
-  </nav>
-
-
-<style>
-    .btn-cotizar {
-        background-color: orangered;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 15px;
-        font-weight: 500;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        cursor: pointer;
-        margin-right: 10px;
-    }
-
-    .nav-link.active {
-      color: #fb923c;
-      border-bottom: 2px solid #f97316;
-      padding-bottom: 0.25rem;
-    }
-
-    @media (max-width: 768px) {
-        .btn-cotizar {
-            padding: 0.5rem 0.75rem;
-            font-size: 0.875rem;
-        }
-    }
-</style>
-
+<header class="site-header" data-nav>
+  <a class="brand" href="/" aria-label="MEGUIS, inicio"><img src={MeguisLogo.src} alt="MEGUIS Import & Export" /><span>MEGUIS</span></a>
+  <nav class="nav-links" aria-label="Navegación principal"><a href="/#servicios">Servicios</a><a href="/#proceso">Cómo funciona</a><a href="/#legado">Nuestra historia</a></nav>
+  <a class="nav-cta" href="/#contacto">Cotizar carga <span aria-hidden="true">↗</span></a>
+</header>
 <script>
-  const initNavbarActiveLink = () => {
-    const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
-    const sections = Array.from(navLinks)
-      .map((link) => {
-        const href = link.getAttribute('href');
-        return href && href.startsWith('#') ? document.getElementById(href.slice(1)) : null;
-      })
-      .filter((section): section is HTMLElement => section !== null);
-
-    const clearActive = () => {
-      navLinks.forEach((link) => link.classList.remove('active'));
-    };
-
-    const setActive = (link: HTMLAnchorElement) => {
-      clearActive();
-      link.classList.add('active');
-    };
-
-    navLinks.forEach((link) => {
-      link.addEventListener('click', () => setActive(link));
-    });
-
-    if (sections.length > 0 && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const activeLink = document.querySelector<HTMLAnchorElement>(`.nav-link[href="#${entry.target.id}"]`);
-            if (activeLink) {
-              setActive(activeLink);
-            }
-          });
-        },
-        {
-          rootMargin: '-40% 0% -55% 0%',
-          threshold: 0.1,
-        }
-      );
-
-      sections.forEach((section) => observer.observe(section));
-    }
-
-    const hash = window.location.hash;
-    if (hash) {
-      const initialLink = document.querySelector<HTMLAnchorElement>(`.nav-link[href="${hash}"]`);
-      if (initialLink) {
-        setActive(initialLink);
-        return;
-      }
-    }
-
-    if (navLinks.length > 0) {
-      setActive(navLinks[0]);
-    }
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNavbarActiveLink);
-  } else {
-    initNavbarActiveLink();
-  }
+  const nav = document.querySelector<HTMLElement>("[data-nav]");
+  const updateNav = () => nav?.classList.toggle("is-scrolled", window.scrollY > 32);
+  updateNav(); window.addEventListener("scroll", updateNav, { passive: true });
 </script>
+<style>
+  .site-header{position:fixed;z-index:100;top:18px;left:50%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;width:min(calc(100% - 32px),1410px);padding:10px 12px 10px 18px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.15);border-radius:18px;background:rgba(1,13,28,.42);box-shadow:0 12px 50px rgba(0,0,0,.18);backdrop-filter:blur(18px);transition:background .3s ease,top .3s ease,border-color .3s ease}.site-header.is-scrolled{top:10px;border-color:rgba(255,255,255,.1);background:rgba(1,13,28,.9)}.brand{display:flex;align-items:center;gap:10px;width:max-content;color:#fff;font-size:.83rem;font-weight:800;letter-spacing:.14em;text-decoration:none}.brand img{width:48px;height:48px;object-fit:contain}.nav-links{display:flex;align-items:center;gap:clamp(18px,3vw,44px)}.nav-links a{position:relative;color:#c4d0db;font-size:.88rem;font-weight:550;text-decoration:none}.nav-links a::after{content:"";position:absolute;right:0;bottom:-8px;left:0;height:1px;transform:scaleX(0);transform-origin:right;background:#ff4b17;transition:transform .3s ease}.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}.nav-cta{justify-self:end;display:flex;align-items:center;gap:22px;padding:13px 17px;border-radius:12px;background:#ff4b17;color:#fff;font-size:.88rem;font-weight:700;text-decoration:none;transition:transform .25s ease,background .25s ease}.nav-cta:hover{transform:translateY(-2px);background:#e83e0b}@media(max-width:760px){.site-header{grid-template-columns:1fr auto}.nav-links,.brand span{display:none}.brand img{width:42px;height:42px}.nav-cta{gap:12px;padding:11px 14px}}
+</style>
