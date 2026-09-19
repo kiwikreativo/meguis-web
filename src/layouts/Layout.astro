@@ -1,12 +1,22 @@
 ---
 import "../assets/app.css";
 import Navbar from "../components/Navbar.astro";
-interface Props { title?: string; description?: string; canonical?: string; ogTitle?: string; ogDescription?: string; ogUrl?: string; ogImage?: string; structuredData?: Record<string, unknown>; }
-const { title="Agencia Aduanera en Puerto Cortés, Honduras | Meguis", description="Meguis Import & Export ofrece despacho aduanero, logística integral y transporte terrestre de carga en Honduras.", canonical="https://www.meguis.net/", ogTitle="Meguis - Logística y Aduanas en Honduras", ogDescription=description, ogUrl=canonical, ogImage="https://www.meguis.net/og-image.webp", structuredData:pageStructuredData }=Astro.props;
-const structuredData=pageStructuredData??{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://meguis.net/#business",name:"Meguis Import & Export",url:"https://www.meguis.net/",telephone:"+504 96380889",address:{"@type":"PostalAddress",addressLocality:"Puerto Cortés",addressCountry:"HN"},areaServed:{"@type":"Country",name:"Honduras"}};
+import { businessSchema, site } from "../data/site";
+interface Props { title?: string; description?: string; canonical?: string; ogTitle?: string; ogDescription?: string; ogUrl?: string; ogImage?: string; structuredData?: Record<string, unknown>; noindex?: boolean; }
+const { title="Agencia Aduanera y Logística en Honduras | MEGUIS", description="Despacho aduanero, logística integral y transporte terrestre de carga desde Puerto Cortés hacia destinos en Honduras.", canonical=`${site.url}/`, ogTitle=title, ogDescription=description, ogUrl=canonical, ogImage=`${site.url}/og-image.webp`, structuredData:pageStructuredData, noindex=false }=Astro.props;
+const structuredData=pageStructuredData??{"@context":"https://schema.org","@graph":[businessSchema,{"@type":"WebSite","@id":`${site.url}/#website`,url:`${site.url}/`,name:site.name,inLanguage:"es-HN",publisher:{"@id":`${site.url}/#business`}}]};
 ---
-<!doctype html><html lang="es-HN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta name="author" content="Meguis Import & Export"/><meta name="theme-color" content="#010d1c"/><link rel="canonical" href={canonical}/><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/><link rel="manifest" href="/site.webmanifest"/><meta property="og:title" content={ogTitle}/><meta property="og:description" content={ogDescription}/><meta property="og:type" content="website"/><meta property="og:url" content={ogUrl}/><meta property="og:image" content={ogImage}/><script type="application/ld+json" set:html={JSON.stringify(structuredData)}/><title>{title}</title></head><body><Navbar/><slot/></body></html>
+<!doctype html><html lang="es-HN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta name="author" content={site.name}/><meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"}/><meta name="theme-color" content="#010d1c"/><link rel="canonical" href={canonical}/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/><link rel="manifest" href="/site.webmanifest"/><meta property="og:locale" content="es_HN"/><meta property="og:site_name" content={site.name}/><meta property="og:title" content={ogTitle}/><meta property="og:description" content={ogDescription}/><meta property="og:type" content="website"/><meta property="og:url" content={ogUrl}/><meta property="og:image" content={ogImage}/><meta property="og:image:alt" content="MEGUIS Import & Export, logística y aduanas en Honduras"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={ogTitle}/><meta name="twitter:description" content={ogDescription}/><meta name="twitter:image" content={ogImage}/><script type="application/ld+json" set:html={JSON.stringify(structuredData)}/><title>{title}</title></head><body><Navbar/><slot/><script is:inline>
+document.addEventListener("click", function(event) {
+  const target = event.target instanceof Element ? event.target.closest("[data-seo-event]") : null;
+  if (!target) return;
+  const eventName = target.getAttribute("data-seo-event");
+  const payload = { event: eventName, destination: target.getAttribute("href") || "", page_path: location.pathname };
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(payload);
+  window.dispatchEvent(new CustomEvent("meguis:conversion", { detail: payload }));
+});
+</script></body></html>
 <style is:global>
- @import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap");
  :root{color-scheme:dark;font-family:"Geist",system-ui,sans-serif;scroll-behavior:smooth}*{box-sizing:border-box}html,body{margin:0;width:100%;background:#010d1c}body{overflow-x:hidden}button,a{font:inherit}::selection{background:#ff4b17;color:#fff}
 </style>

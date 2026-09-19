@@ -1,0 +1,12 @@
+[[redirects]]
+  from = "/agente-aduanero-puerto-cortes/"
+  to = "/agencia-aduanera-puerto-cortes/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"

@@ -1,0 +1,36 @@
+---
+import ServicePage from "../components/ServicePage.astro";
+import legalImage from "../assets/meguis-legado-puerto-cortes.webp";
+import type { ServiceDefinition } from "../data/services";
+
+const service: ServiceDefinition = {
+  slug: "despacho-aduanero",
+  number: "04",
+  icon: "scale",
+  title: "Despacho aduanero en Puerto Cortés",
+  shortTitle: "Despacho aduanero",
+  description: "Coordinación del proceso aduanero para mercancías que ingresan por Puerto Cortés y continúan hacia destinos en Honduras.",
+  metaDescription: "Apoyo con despacho aduanero, documentación y nacionalización de mercancías en Puerto Cortés para importadores en Honduras.",
+  seoTitle: "Despacho Aduanero en Puerto Cortés, Honduras | MEGUIS",
+  image: legalImage,
+  imageAlt: "Documentación de importación y actividad portuaria vinculadas con un despacho aduanero en Puerto Cortés.",
+  imagePosition: "center 44%",
+  overviewTitle: "El paso que conecta la llegada de su carga con su siguiente destino.",
+  overview: [
+    "El despacho aduanero reúne las gestiones necesarias para procesar una mercancía ante la autoridad correspondiente. Cada operación requiere información coherente sobre la carga, su origen, transporte y documentos de soporte.",
+    "Desde Puerto Cortés, acompañamos la coordinación del proceso y mantenemos una comunicación clara para que el importador comprenda el avance de su operación. Los requisitos concretos se revisan según la mercancía y las disposiciones vigentes.",
+  ],
+  capabilities: [
+    { title: "Revisión inicial", description: "Revisamos la información disponible y el contexto de la mercancía antes de coordinar la gestión." },
+    { title: "Documentación", description: "Orientamos sobre la documentación que debe respaldar la operación aduanera." },
+    { title: "Coordinación del despacho", description: "Damos seguimiento a las etapas correspondientes del proceso en Puerto Cortés." },
+    { title: "Continuidad logística", description: "Conectamos el avance aduanero con el retiro y el traslado posterior cuando la operación lo requiere." },
+  ],
+  benefits: [
+    { title: "Claridad", description: "Explicamos las etapas y la información necesaria con un lenguaje comprensible." },
+    { title: "Seguimiento", description: "Mantenemos comunicación durante el avance de la gestión aduanera." },
+    { title: "Coordinación local", description: "Atendemos operaciones relacionadas con el ingreso de carga por Puerto Cortés." },
+  ],
+};
+---
+<ServicePage service={service}/>

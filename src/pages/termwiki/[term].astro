@@ -1,0 +1,10 @@
+---
+import TermWikiEntry from "../../components/TermWikiEntry.astro";
+import { terms, type TermEntry } from "../../data/termwiki";
+export function getStaticPaths() {
+  return terms.map((entry) => ({ params: { term: entry.slug }, props: { entry } }));
+}
+interface Props { entry: TermEntry; }
+const { entry } = Astro.props;
+---
+<TermWikiEntry entry={entry}/>
