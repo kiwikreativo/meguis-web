@@ -6,9 +6,10 @@ import GroundTransport from "../assets/meguis-transporte-terrestre.webp";
 import LegacyPuertoCortes from "../assets/meguis-legado-puerto-cortes.webp";
 import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
+import { breadcrumbSchema, businessSchema, site } from "../data/site";
 
-const whatsapp = "https://api.whatsapp.com/send?phone=50496380889&text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20despacho%20aduanero%20y%20log%C3%ADstica%20integral.";
-const canonical = "https://www.meguis.net/agencia-aduanera-puerto-cortes/";
+const whatsapp = site.whatsapp;
+const canonical = `${site.url}/agencia-aduanera-puerto-cortes/`;
 const faqs = [
   {
     question: "¿Qué hace una agencia aduanera en Puerto Cortés?",
@@ -26,48 +27,21 @@ const faqs = [
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": `${canonical}#business`,
-      name: "Meguis Import & Export",
-      url: canonical,
-      image: "https://www.meguis.net/og-image.webp",
-      telephone: "+504 96380889",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Plaza ENG#2, primera planta, último local a mano derecha",
-        addressLocality: "Puerto Cortés",
-        addressRegion: "Cortés",
-        addressCountry: "HN",
-      },
-      areaServed: [{ "@type": "City", name: "Puerto Cortés" }, { "@type": "Country", name: "Honduras" }],
-      openingHoursSpecification: [
-        { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "17:00" },
-        { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:00", closes: "12:00" },
-      ],
-      hasOfferCatalog: {
+    { ...businessSchema, hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Servicios de logística integral y aduanas",
         itemListElement: [
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Despacho aduanero en Puerto Cortés" } },
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Logística integral para importaciones a Honduras" } },
         ],
-      },
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: { "@type": "Answer", text: faq.answer },
-      })),
-    },
+      } },
+    breadcrumbSchema([{name:"Inicio",url:`${site.url}/`},{name:"Agencia aduanera en Puerto Cortés",url:canonical}]),
   ],
 };
 ---
 
 <Layout
-  title="Agencia Aduanera en Puerto Cortés, Honduras | Meguis"
+  title="Agencia Aduanera en Puerto Cortés, Honduras | MEGUIS"
   description="Agencia aduanera en Puerto Cortés para despacho de mercancías, importaciones y logística integral hacia cualquier destino de Honduras. Solicite asesoría a Meguis."
   canonical={canonical}
   ogTitle="Agencia Aduanera en Puerto Cortés | Meguis"
@@ -81,11 +55,12 @@ const structuredData = {
       <div class="hero-wash" aria-hidden="true"></div>
       <div class="shell hero-inner">
         <div class="hero-copy" data-hero-copy>
+          <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span>/</span><span aria-current="page">Agencia aduanera en Puerto Cortés</span></nav>
           <p class="location">Puerto Cortés, Honduras</p>
           <h1>Agencia aduanera en Puerto Cortés para sus importaciones</h1>
           <p class="lead">Coordinamos el despacho aduanero y la logística de mercancías que llegan a Honduras, desde la documentación hasta la entrega en su destino.</p>
           <div class="hero-actions">
-            <a class="button primary" target="_blank" rel="noreferrer" href={whatsapp}>Solicitar asesoría <ArrowUpRight size={18} aria-hidden="true" /></a>
+            <a class="button primary" target="_blank" rel="noreferrer" href={whatsapp} data-seo-event="whatsapp_click">Solicitar asesoría <ArrowUpRight size={18} aria-hidden="true" /></a>
             <a class="button ghost" href="#servicios">Conocer servicios <ArrowDownRight size={18} aria-hidden="true" /></a>
           </div>
         </div>
@@ -143,7 +118,7 @@ const structuredData = {
           <p class="kicker">Así trabajamos</p>
           <h2>Claridad en cada movimiento.</h2>
           <p>Un acompañamiento cercano desde la primera consulta hasta la confirmación de entrega.</p>
-          <a class="text-link" href={whatsapp} target="_blank" rel="noreferrer">Comenzar una consulta <ArrowUpRight size={18} aria-hidden="true" /></a>
+          <a class="text-link" href={whatsapp} target="_blank" rel="noreferrer" data-seo-event="whatsapp_click">Comenzar una consulta <ArrowUpRight size={18} aria-hidden="true" /></a>
         </div>
         <div class="process-list">
           <article><span>01</span><div><h3>Consulta inicial</h3><p>Conocemos su operación, el origen de la mercancía y el destino que necesita coordinar.</p></div></article>
@@ -170,7 +145,7 @@ const structuredData = {
             <span>Puerto Cortés, Cortés, Honduras</span>
             <span>Lunes a viernes: 8:00 AM - 5:00 PM</span>
             <span>Sábado: 8:00 AM - 12:00 PM</span>
-            <a href="tel:+50496380889">+504 9638-0889</a>
+            <a href="tel:+50496380889" data-seo-event="phone_click">+504 9638-0889</a>
           </address>
         </div>
       </div>
@@ -190,12 +165,19 @@ const structuredData = {
       </div>
     </section>
 
+    <section class="learn-section chapter" data-reveal-section>
+      <div class="shell learn-grid" data-reveal>
+        <div><p class="kicker">Base de conocimiento</p><h2>Comprenda los conceptos antes de mover su carga.</h2></div>
+        <div class="learn-links"><a href="/despacho-aduanero/"><span>Servicio</span><strong>Despacho aduanero en Puerto Cortés</strong></a><a href="/termwiki/"><span>TermWiki</span><strong>Glosario de importación y aduanas</strong></a><a href="/termwiki/nacionalizacion-de-mercancias/"><span>Concepto</span><strong>Nacionalización de mercancías</strong></a></div>
+      </div>
+    </section>
+
     <section class="final-cta">
       <div class="shell cta-panel" data-reveal>
         <p class="kicker">Hablemos de su carga</p>
         <h2>¿Necesita importar mercancía a Honduras?</h2>
         <p>Conversemos sobre su carga y el apoyo aduanero que necesita.</p>
-        <a class="button light-button" href={whatsapp} target="_blank" rel="noreferrer">Contactar por WhatsApp <ArrowUpRight size={18} aria-hidden="true" /></a>
+        <a class="button light-button" href={whatsapp} target="_blank" rel="noreferrer" data-seo-event="whatsapp_click">Contactar por WhatsApp <ArrowUpRight size={18} aria-hidden="true" /></a>
       </div>
     </section>
   </main>
@@ -234,4 +216,6 @@ const structuredData = {
   @media(max-width:900px){.chapter{padding:7rem 0}.trust-grid{grid-template-columns:repeat(3,1fr);gap:20px}.trust-grid>p{grid-column:1/-1}.trust-grid>div{padding:18px 0 0;border-top:1px solid #ffffff21;border-left:0}.overview-grid,.services-head,.process-grid,.location-grid,.faq-grid{grid-template-columns:1fr}.overview-copy{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr;grid-template-rows:auto}.featured,.wide{grid-column:auto;grid-row:auto;min-height:520px}.wide{grid-template-columns:1fr .7fr;min-height:350px}.process-list article{min-height:auto;padding:70px 0}.location-media{min-height:580px}.faq-grid{gap:60px}}
   @media(max-width:620px){.shell{width:min(calc(100% - 24px),1410px)}.agency-hero{min-height:800px}.agency-hero h1{font-size:clamp(3rem,13.5vw,4.6rem)}.hero-actions,.hero-actions .button{width:100%}.trust-grid{grid-template-columns:1fr}.trust-grid>p{grid-column:auto}.wide{grid-template-columns:1fr}.wide .service-image,.legal-lines{display:none}.featured{min-height:570px}.process-list article{grid-template-columns:42px 1fr}.location-media{min-height:470px}.faq-list summary{grid-template-columns:34px 1fr 22px;gap:10px}.faq-list details>p{padding-left:44px}.cta-panel{border-radius:18px}.button{width:100%}}
   @media(prefers-reduced-motion:reduce){.button,.service-image,.location-media img,.faq-list summary i:after{transition:none}}
+  .learn-section{background:#06192b}.learn-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(50px,9vw,140px)}.learn-grid h2{max-width:650px;margin:24px 0 0;font-size:clamp(2.8rem,5vw,5.4rem);font-weight:520;line-height:1}.learn-links{border-top:1px solid #ffffff2b}.learn-links a{display:flex;flex-direction:column;gap:8px;padding:28px 0;border-bottom:1px solid #ffffff2b;color:#fff;text-decoration:none}.learn-links span{color:#ff754c;font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.learn-links strong{font-size:clamp(1.2rem,2vw,1.7rem);font-weight:560}.learn-links a:hover strong{color:#ff754c}@media(max-width:900px){.learn-grid{grid-template-columns:1fr}}
+  .breadcrumbs{display:flex;gap:10px;margin-bottom:24px;color:#8396a6;font-size:.78rem}.breadcrumbs a{color:#c2ced7;text-decoration:none}.breadcrumbs a:hover{color:#fff}
 </style>

@@ -23,6 +23,7 @@ export interface ServiceDefinition {
   shortTitle: string;
   description: string;
   metaDescription: string;
+  seoTitle: string;
   image: ImageMetadata;
   imageAlt: string;
   imagePosition?: string;
@@ -41,6 +42,7 @@ export const services: ServiceDefinition[] = [
     shortTitle: "Logística integral",
     description: "Gestión aduanera, transporte terrestre y nacionalización desde Puerto Cortés hasta el destino final.",
     metaDescription: "Coordinación de logística integral, gestión aduanera y transporte terrestre desde Puerto Cortés hacia destinos en Honduras.",
+    seoTitle: "Logística Integral para Importadores en Honduras | MEGUIS",
     image: logisticsImage,
     imageAlt: "Buque, grúas y transporte de carga coordinados en una operación logística integral.",
     imagePosition: "center 42%",
@@ -69,6 +71,7 @@ export const services: ServiceDefinition[] = [
     shortTitle: "Transporte terrestre",
     description: "Coordinación de rutas desde Puerto Cortés hacia Tegucigalpa y otros destinos nacionales.",
     metaDescription: "Coordinación de transporte terrestre de carga desde Puerto Cortés hacia Tegucigalpa y otros destinos de Honduras.",
+    seoTitle: "Transporte Terrestre de Carga en Honduras | MEGUIS",
     image: transportImage,
     imageAlt: "Camión de carga en una ruta costera de Honduras con infraestructura portuaria al fondo.",
     imagePosition: "center",
@@ -97,6 +100,7 @@ export const services: ServiceDefinition[] = [
     shortTitle: "Asesoría aduanera",
     description: "Orientación especializada para importar mercancías y cumplir los trámites aduaneros en Honduras.",
     metaDescription: "Orientación sobre procesos, documentación y trámites aduaneros para importar y nacionalizar mercancías en Honduras.",
+    seoTitle: "Asesoría Aduanera para Importadores en Honduras | MEGUIS",
     image: legalImage,
     imageAlt: "Documentación de importación junto a una escena de actividad portuaria en Puerto Cortés.",
     imagePosition: "center 45%",
