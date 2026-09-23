@@ -1,0 +1,69 @@
+---
+import DottedMap from "dotted-map";
+
+const PUERTO_CORTES = { lat: 15.846343, lng: -87.947241 } as const;
+const ORANGE = "#ff4b17";
+const NAVY = "#06192b";
+const DOT = "#78909c";
+
+type MapRegion = {
+  name: string;
+  minLat: number;
+  maxLat: number;
+  minLng: number;
+  maxLng: number;
+};
+
+const createMap = ({ name, minLat, maxLat, minLng, maxLng }: MapRegion) => {
+  const map = new DottedMap({
+    height: 100,
+    grid: "diagonal",
+    region: { lat: { min: minLat, max: maxLat }, lng: { min: minLng, max: maxLng } },
+    projection: { name: "mercator" },
+    avoidOuterPins: false,
+  });
+
+  map.addPin({
+    ...PUERTO_CORTES,
+    data: { id: "puerto-cortes" },
+    svgOptions: { color: ORANGE, radius: 0.9 },
+  });
+
+  const marker = map.getPoints().find((point) => point.data?.id === "puerto-cortes");
+  if (!marker) throw new Error(`Puerto Cortés is outside the ${name} map region.`);
+
+  const callout = `
+    <style>
+      .pc-pulse { transform-box: fill-box; transform-origin: center; animation: pc-pulse 2.8s ease-out infinite; }
+      @keyframes pc-pulse { 0% { opacity: .55; transform: scale(.6); } 72%, 100% { opacity: 0; transform: scale(2.4); } }
+      @media (prefers-reduced-motion: reduce) { .pc-pulse { animation: none; opacity: .28; } }
+    </style>
+    <g aria-hidden="true">
+      <circle class="pc-pulse" cx="${marker.x}" cy="${marker.y}" r="1.8" fill="none" stroke="${ORANGE}" stroke-width=".55" />
+      <circle cx="${marker.x}" cy="${marker.y}" r=".9" fill="${ORANGE}" />
+      <path d="M ${marker.x + 2.1} ${marker.y} H ${marker.x + 9}" fill="none" stroke="${ORANGE}" stroke-width=".55" />
+      <text x="${marker.x + 10.5}" y="${marker.y - 1.05}" fill="#eef1ed" font-family="Geist, system-ui, sans-serif" font-size="2.15" font-weight="700" letter-spacing=".2">PUERTO CORTÉS</text>
+      <text x="${marker.x + 10.5}" y="${marker.y + 2.05}" fill="${ORANGE}" font-family="Geist, system-ui, sans-serif" font-size="1.55" font-weight="700" letter-spacing=".22">HONDURAS</text>
+    </g>`;
+
+  return map
+    .getSVG({ radius: 0.24, color: DOT, shape: "circle", backgroundColor: NAVY })
+    .replace("<svg ", '<svg aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" ')
+    .replace("</svg>", `${callout}</svg>`);
+};
+
+const variants = [
+  createMap({ name: "desktop", minLat: -58, maxLat: 78, minLng: -170, maxLng: -30 }),
+  createMap({ name: "mobile", minLat: -48, maxLat: 65, minLng: -140, maxLng: -45 }),
+];
+---
+
+  <div class="americas-map" role="img" aria-label="Mapa de las Américas que destaca Puerto Cortés, Honduras.">
+  <div class="map-variant desktop-map" set:html={variants[0]}></div>
+  <div class="map-variant mobile-map" set:html={variants[1]}></div>
+  <div class="map-vignette" aria-hidden="true"></div>
+</div>
+
+<style>
+  .americas-map{position:absolute;inset:0;overflow:hidden;background:#06192b;isolation:isolate}.americas-map:before{position:absolute;z-index:2;inset:0;content:"";pointer-events:none;background:radial-gradient(circle at 59% 51%,rgba(255,75,23,.09),transparent 24%),linear-gradient(145deg,rgba(255,255,255,.025),transparent 34%)}.map-variant{position:absolute;inset:4%;display:flex;align-items:center;justify-content:center}.map-variant :global(svg){display:block;width:100%;height:100%;overflow:visible}.mobile-map{display:none}.map-vignette{position:absolute;z-index:3;inset:0;pointer-events:none;box-shadow:inset 0 0 90px 24px rgba(1,13,28,.58)}@media(max-width:900px){.map-variant{inset:3% 5%}}@media(max-width:620px){.desktop-map{display:none}.mobile-map{display:flex}.map-variant{inset:2%}.map-vignette{box-shadow:inset 0 0 54px 14px rgba(1,13,28,.52)}}
+</style>

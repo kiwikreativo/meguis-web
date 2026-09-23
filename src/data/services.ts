@@ -3,7 +3,7 @@ import logisticsImage from "../assets/meguis-logistics-integral.webp";
 import transportImage from "../assets/meguis-transporte-terrestre.webp";
 import legalImage from "../assets/meguis-legado-puerto-cortes.webp";
 
-export type ServiceIcon = "ship" | "truck" | "scale";
+export type ServiceIcon = "ship" | "truck" | "scale" | "file-check";
 
 export interface ServiceCapability {
   title: string;
@@ -93,26 +93,26 @@ export const services: ServiceDefinition[] = [
     ],
   },
   {
-    slug: "asesoria-legal-aduanera",
+    slug: "orientacion-aduanera",
     number: "03",
-    icon: "scale",
-    title: "Asesoría legal aduanera",
-    shortTitle: "Asesoría aduanera",
-    description: "Orientación especializada para importar mercancías y cumplir los trámites aduaneros en Honduras.",
-    metaDescription: "Orientación sobre procesos, documentación y trámites aduaneros para importar y nacionalizar mercancías en Honduras.",
-    seoTitle: "Asesoría Aduanera para Importadores en Honduras | MEGUIS",
+    icon: "file-check",
+    title: "Orientación aduanera para importar mercancías en Honduras",
+    shortTitle: "Orientación aduanera",
+    description: "Orientación aduanera sobre documentación, trámites y nacionalización de mercancías para importadores en Honduras, con atención desde Puerto Cortés.",
+    metaDescription: "Orientación aduanera sobre documentación, trámites y nacionalización de mercancías para importadores en Honduras, con atención desde Puerto Cortés.",
+    seoTitle: "Orientación Aduanera para Importadores en Honduras | MEGUIS",
     image: legalImage,
     imageAlt: "Documentación de importación junto a una escena de actividad portuaria en Puerto Cortés.",
     imagePosition: "center 45%",
-    overviewTitle: "Orientación para comprender cada trámite aduanero.",
+    overviewTitle: "Una ruta clara para comprender sus trámites aduaneros.",
     overview: [
-      "Brindamos orientación especializada para facilitar los procesos relacionados con la importación de mercancías y los trámites aduaneros correspondientes en Honduras.",
-      "Acompañamos la revisión de los pasos y la documentación necesaria para que usted comprenda el proceso de nacionalización de su carga.",
+      "Brindamos orientación aduanera en Honduras para ayudarle a comprender el proceso de importación, los trámites aplicables y la documentación que puede requerir su mercancía.",
+      "Desde Puerto Cortés, acompañamos la revisión de los pasos y documentos necesarios para que usted tenga mayor claridad sobre la nacionalización de su carga.",
     ],
     capabilities: [
       { title: "Orientación aduanera", description: "Acompañamiento para comprender los procedimientos relacionados con la importación." },
       { title: "Revisión de procesos", description: "Orientación sobre los pasos y la documentación requeridos durante los trámites aduaneros." },
-      { title: "Nacionalización", description: "Apoyo durante el proceso necesario para el ingreso legal de mercancías al país." },
+      { title: "Nacionalización", description: "Orientación sobre las formalidades aplicables al ingreso de mercancías al país." },
       { title: "Acompañamiento", description: "Comunicación y orientación durante las diferentes etapas del proceso." },
     ],
     benefits: [
