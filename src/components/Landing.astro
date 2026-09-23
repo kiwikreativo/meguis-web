@@ -3,14 +3,14 @@ import Footer from "./Footer.astro";
 import ExperienceInline from "../assets/meguis-experience-inline.webp";
 import LogisticsIntegral from "../assets/meguis-logistics-integral.webp";
 import GroundTransport from "../assets/meguis-transporte-terrestre.webp";
-import LegacyPuertoCortes from "../assets/meguis-legado-puerto-cortes.webp";
+import DottedAmericasMap from "./DottedAmericasMap.astro";
 import {
   ArrowDownRight,
   ArrowUpRight,
   Check,
   ChevronLeft,
   ChevronRight,
-  Scale,
+  FileCheck2,
   Ship,
   Truck,
 } from "@lucide/astro";
@@ -131,13 +131,13 @@ const testimonials = [
           >
           </div></a
         >
-        <a class="service-card wide light" href="/asesoria-legal-aduanera/"
+        <a class="service-card wide light" href="/orientacion-aduanera/"
           ><div class="service-content">
-            <Scale size={30} /><span class="service-index">03</span><h3>
-              Asesoría legal aduanera
+            <FileCheck2 size={30} /><span class="service-index">03</span><h3>
+              Orientación aduanera
             </h3><p>
-              Orientación especializada para importar mercancías y cumplir los
-              trámites aduaneros en Honduras.
+              Orientación sobre documentación, trámites aduaneros y
+              nacionalización de mercancías en Honduras.
             </p><span class="service-link"
               >Ver servicio <ArrowUpRight size={18} /></span>
           </div><div class="legal-lines"></div></a
@@ -196,13 +196,7 @@ const testimonials = [
   <section class="legacy chapter" id="legado">
     <div class="shell legacy-grid">
       <div class="legacy-media">
-        <img
-          class="legacy-image"
-          src={LegacyPuertoCortes.src}
-          alt="Escena editorial del puerto y la actividad logística de Puerto Cortés."
-          loading="lazy"
-          decoding="async"
-        /><span>Puerto Cortés<br />Honduras</span>
+        <DottedAmericasMap />
       </div><div class="legacy-copy">
         <p class="kicker">Desde 1990</p><h2>
           Experiencia local. Visión que llega más lejos.
@@ -805,34 +799,6 @@ const testimonials = [
     overflow: hidden;
     min-height: 700px;
     border-radius: 18px;
-  }
-  .legacy-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(1) contrast(1.15);
-    transition:
-      transform 0.7s,
-      filter 0.7s;
-  }
-  .legacy-media:hover .legacy-image {
-    transform: scale(1.05);
-    filter: grayscale(0.2);
-  }
-  .legacy-media > span {
-    position: absolute;
-    right: 25px;
-    bottom: 25px;
-    padding: 17px 20px;
-    border-radius: 10px;
-    background: var(--orange);
-    color: #fff;
-    font-size: 0.73rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
   }
   .legacy-copy h2 {
     margin: 25px 0 34px;
