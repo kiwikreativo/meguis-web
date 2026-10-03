@@ -24,14 +24,14 @@ export const terms: TermEntry[] = [
     useCases: ["Cuando una carga llega a Puerto Cortés.", "Cuando el importador necesita preparar o revisar la gestión aduanera.", "Cuando existen dudas sobre la nacionalización de mercancías."],
     related: ["agencia-aduanera", "despacho-aduanero", "nacionalizacion-de-mercancias"],
     serviceHref: "/agencia-aduanera-puerto-cortes/",
-    serviceLabel: "Conocer nuestra agencia aduanera",
+    serviceLabel: "Conocer el servicio de Trámites aduaneros & consultoría",
     reviewed: "18 de septiembre de 2026",
   },
   {
     slug: "agencia-aduanera",
-    term: "Agencia aduanera",
-    summary: "Qué hace una agencia aduanera y cómo apoya el movimiento de mercancías importadas.",
-    definition: "Una agencia aduanera coordina servicios relacionados con la gestión y el despacho de mercancías ante aduanas, apoyando al importador en la preparación, revisión y seguimiento de su operación.",
+    term: "Trámites aduaneros & consultoría",
+    summary: "Qué incluye el servicio de Trámites aduaneros & consultoría y cómo apoya el movimiento de mercancías importadas.",
+    definition: "El servicio de Trámites aduaneros & consultoría coordina la gestión y el despacho de mercancías ante aduanas, apoyando al importador en la preparación, revisión y seguimiento de su operación.",
     context: [
       "Su trabajo se conecta con documentos comerciales, información de transporte, clasificación de la mercancía y otras gestiones que pueden variar según la operación. Una agencia también puede coordinarse con transportistas y otros participantes para dar continuidad a la carga después del despacho.",
       "En Puerto Cortés, esta coordinación es especialmente relevante para cargas que ingresan por vía marítima y luego deben continuar hacia otros destinos de Honduras.",
