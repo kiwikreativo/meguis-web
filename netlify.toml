@@ -1,6 +1,12 @@
 [[redirects]]
   from = "/agente-aduanero-puerto-cortes/"
-  to = "/agencia-aduanera-puerto-cortes/"
+  to = "/tramites-aduaneros-y-consultoria-puerto-cortes/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/agencia-aduanera-puerto-cortes/"
+  to = "/tramites-aduaneros-y-consultoria-puerto-cortes/"
   status = 301
   force = true
 

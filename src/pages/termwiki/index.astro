@@ -12,7 +12,7 @@ const structuredData = { "@context":"https://schema.org", "@graph":[businessSche
   <main class="wiki-page" id="inicio">
     <header class="wiki-hero"><div class="shell"><p>Base de conocimiento MEGUIS</p><h1>TermWiki de aduanas e importación.</h1><div class="intro"><BookOpen size={32} stroke-width={1.5} aria-hidden="true"/><span>Conceptos prácticos para comprender la documentación, el despacho y la logística de una carga en Honduras.</span></div></div></header>
     <section class="terms"><div class="shell"><div class="section-head"><p>Explorar términos</p><h2>Entienda el proceso, concepto por concepto.</h2></div><div class="term-grid">{terms.map((term,index)=><a href={`/termwiki/${term.slug}/`}><span>{String(index+1).padStart(2,"0")}</span><h3>{term.term}</h3><p>{term.summary}</p><strong>Leer definición <ArrowUpRight size={17} aria-hidden="true"/></strong></a>)}</div></div></section>
-    <section class="wiki-cta"><div class="shell"><p>¿Necesita apoyo con una operación real?</p><h2>Los conceptos ayudan. Una revisión de su carga aporta claridad.</h2><a href="/agencia-aduanera-puerto-cortes/" data-seo-event="termwiki_to_service_click">Conocer nuestros servicios <ArrowUpRight size={19} aria-hidden="true"/></a></div></section>
+    <section class="wiki-cta"><div class="shell"><p>¿Necesita apoyo con una operación real?</p><h2>Los conceptos ayudan. Una revisión de su carga aporta claridad.</h2><a href="/tramites-aduaneros-y-consultoria-puerto-cortes/" data-seo-event="termwiki_to_service_click">Conocer nuestros servicios <ArrowUpRight size={19} aria-hidden="true"/></a></div></section>
   </main><Footer/>
 </Layout>
 <style>
