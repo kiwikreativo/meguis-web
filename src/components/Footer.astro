@@ -1,4 +1,5 @@
 ---
+import { Heart } from "@lucide/astro";
 import MeguisLogo from "../assets/Meguis-Logo.webp";
 const whatsapp = "https://api.whatsapp.com/send?phone=50496380889&text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20despacho%20aduanero%20y%20log%C3%ADstica%20integral.";
 ---
@@ -8,7 +9,7 @@ const whatsapp = "https://api.whatsapp.com/send?phone=50496380889&text=Hola%2C%2
     <div><h2>Explorar</h2><a href="/#servicios">Servicios</a><a href="/termwiki/">Guía Aduanera</a><a href="/recursos/">Recursos</a><a href="/#legado">Nuestra historia</a></div>
     <div><h2>Contacto</h2><a href="tel:+50496380889" data-seo-event="phone_click">+504 9638-0889</a><span>Puerto Cortés, Honduras</span><a href={whatsapp} target="_blank" rel="noreferrer" data-seo-event="whatsapp_click">WhatsApp</a></div>
   </div>
-  <div class="shell footer-bottom"><span>© {new Date().getFullYear()} MEGUIS Import & Export</span><a href="#inicio" data-back-top>Volver arriba ↑</a></div>
+  <div class="shell footer-bottom"><span>© {new Date().getFullYear()} MEGUIS Import & Export</span><a class="credit" href="https://kiguidev.me" target="_blank" rel="noopener">Hecho con <Heart size={12} fill="currentColor" aria-label="amor" /> por kiguidev</a><a href="#inicio" data-back-top>Volver arriba ↑</a></div>
 </footer>
 <script>
   document.querySelectorAll<HTMLAnchorElement>("[data-back-top]").forEach((link) => {
@@ -16,5 +17,5 @@ const whatsapp = "https://api.whatsapp.com/send?phone=50496380889&text=Hola%2C%2
   });
 </script>
 <style>
-  .shell{width:min(calc(100% - 32px),1410px);margin-inline:auto}.footer{padding:90px 0 28px;background:#000710;color:#f6f7f8}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:70px;padding-bottom:80px}.footer-grid>div{display:flex;flex-direction:column;align-items:flex-start;gap:12px}.footer img{width:76px}.footer p{max-width:310px;margin-top:0;color:#7f92a3;line-height:1.6}.footer h2{margin:0 0 10px;color:#869aaa;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}.footer a,.footer span{color:#c7d1da;font-size:.9rem;text-decoration:none}.footer a:hover{color:#fff}.footer a:focus-visible{outline:3px solid #ff4b17;outline-offset:4px}.footer-bottom{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid #ffffff1a}.footer-bottom span,.footer-bottom a{color:#647888;font-size:.75rem}@media(max-width:620px){.shell{width:min(calc(100% - 24px),1410px)}.footer-grid{grid-template-columns:1fr;gap:45px}.footer-bottom{flex-direction:column;gap:12px}}
+  .shell{width:min(calc(100% - 32px),1410px);margin-inline:auto}.footer{padding:90px 0 28px;background:#000710;color:#f6f7f8}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:70px;padding-bottom:80px}.footer-grid>div{display:flex;flex-direction:column;align-items:flex-start;gap:12px}.footer img{width:76px}.footer p{max-width:310px;margin-top:0;color:#7f92a3;line-height:1.6}.footer h2{margin:0 0 10px;color:#869aaa;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}.footer a,.footer span{color:#c7d1da;font-size:.9rem;text-decoration:none}.footer a:hover{color:#fff}.footer a:focus-visible{outline:3px solid #ff4b17;outline-offset:4px}.footer-bottom{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid #ffffff1a}.footer-bottom span,.footer-bottom a{color:#647888;font-size:.75rem}.credit{display:inline-flex;align-items:center;gap:4px}.credit svg{color:#ff4b17}@media(max-width:620px){.shell{width:min(calc(100% - 24px),1410px)}.footer-grid{grid-template-columns:1fr;gap:45px}.footer-bottom{flex-direction:column;gap:12px}}
 </style>
