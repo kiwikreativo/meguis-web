@@ -1,0 +1,276 @@
+---
+import { ArrowUpRight, Car, FileCheck2, Home, Landmark, MapPin, ShieldCheck, Wrench } from "@lucide/astro";
+import ExperienceInline from "../assets/meguis-experience-inline.webp";
+import LogisticsIntegral from "../assets/meguis-logistics-integral.webp";
+import GroundTransport from "../assets/meguis-transporte-terrestre.webp";
+import LegacyPuertoCortes from "../assets/meguis-legado-puerto-cortes.webp";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbSchema, businessSchema, site } from "../data/site";
+
+const canonical = `${site.url}/beneficios-migrantes-retornados-honduras/`;
+const title = "Beneficios para migrantes retornados en Honduras: menaje y vehículo sin impuestos | MEGUIS";
+const description = "Importe su menaje de casa, implementos de trabajo y vehículos libres de impuestos según el Acuerdo 657-2026. MEGUIS gestiona su trámite desde Puerto Cortés.";
+const whatsapp = `https://api.whatsapp.com/send?phone=${site.phone.replace("+", "")}&text=${encodeURIComponent("Hola, soy migrante retornado y quiero información sobre la importación de mi menaje de casa o vehículo con el Acuerdo 657-2026.")}`;
+
+const faqs = [
+  {
+    question: "¿Quién puede aplicar al beneficio de migrante retornado?",
+    answer: "Personas hondureñas que regresan al país con voluntad de residir definitivamente en Honduras, de forma individual o junto a su grupo familiar dependiente. Deben estar en territorio nacional para iniciar el trámite ante el Instituto Nacional de Migración.",
+  },
+  {
+    question: "¿Cuánto tiempo tengo para importar mis bienes?",
+    answer: "La constancia del INM tiene una vigencia de doce meses contados desde su fecha de ingreso al país. El menaje de casa se importa una sola vez; los implementos de trabajo pueden importarse dentro de esos doce meses.",
+  },
+  {
+    question: "¿Puedo vender el vehículo que importé con la exención?",
+    answer: "El Instituto de la Propiedad anota una inalienabilidad preventiva por doce meses. Si desea venderlo antes de ese plazo, primero debe pagar los impuestos correspondientes.",
+  },
+  {
+    question: "¿Puedo ceder el beneficio a otra persona?",
+    answer: "No. Las exenciones son personalísimas y no se pueden ceder a terceros, ni las individuales ni las otorgadas a integrantes del grupo familiar.",
+  },
+];
+
+const fineprint = "El beneficio es personal y se otorga una sola vez. Si regresa con su familia, todos quedan en una misma constancia y no podrán solicitarlo después de forma individual. Aduanas revisa que los bienes coincidan con el número de personas beneficiadas y con las tablas de valoración. Cualquier declaración falsa implica el cobro de tributos, recargos y multas.";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    businessSchema,
+    breadcrumbSchema([
+      { name: "Inicio", url: `${site.url}/` },
+      { name: "Beneficios para migrantes retornados", url: canonical },
+    ]),
+    {
+      "@type": "Article",
+      "@id": `${canonical}#article`,
+      headline: "Beneficios aduaneros para migrantes retornados en Honduras (Acuerdo 657-2026)",
+      description,
+      inLanguage: "es-HN",
+      datePublished: "2026-11-25",
+      dateModified: "2026-11-25",
+      mainEntityOfPage: canonical,
+      image: `${site.url}/og-image.webp`,
+      author: { "@id": `${site.url}/#business` },
+      publisher: { "@id": `${site.url}/#business` },
+      about: [
+        { "@type": "Legislation", name: "Acuerdo Ejecutivo 657-2026, Reglamento de la Ley Especial de Facilitación del Retorno y Protección del Patrimonio de las Personas Migrantes Hondureñas y sus Familias", legislationJurisdiction: "HN" },
+        { "@type": "Legislation", name: "Decreto Legislativo 73-2026", legislationJurisdiction: "HN" },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })),
+    },
+  ],
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle="Migrantes retornados: importe su menaje y vehículo sin impuestos"
+  ogDescription="Lo que establece el Acuerdo 657-2026 y cómo hacer el trámite. Asesoría de MEGUIS en Puerto Cortés."
+  ogUrl={canonical}
+  structuredData={structuredData}
+>
+  <main class="mr-page">
+    <section class="mr-hero">
+      <div class="mr-glow" aria-hidden="true"></div>
+      <div class="shell mr-hero-inner">
+        <div class="mr-hero-copy" data-hero-copy>
+          <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span>/</span><span aria-current="page">Beneficios para migrantes retornados</span></nav>
+          <p class="kicker">Acuerdo 657-2026 · La Gaceta, 20 de noviembre de 2026</p>
+          <h1>Regrese a Honduras con su menaje y su vehículo libres de impuestos.</h1>
+          <p class="lead">El nuevo reglamento de la Ley Especial de Facilitación del Retorno ya está vigente. Si vuelve a vivir al país, puede traer su patrimonio sin pagar tributos de importación.</p>
+        </div>
+        <figure class="mr-hero-media" data-hero-media>
+          <img src={LegacyPuertoCortes.src} width={LegacyPuertoCortes.width} height={LegacyPuertoCortes.height} alt="Actividad portuaria en Puerto Cortés, punto de entrada del menaje de migrantes retornados." fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="mr-benefits chapter" data-reveal-section>
+      <div class="shell" data-reveal>
+        <h2 class="mr-section-title">Lo que puede traer <span class="inline-image" role="img" aria-label="Contenedores en terminal portuaria." style={`background-image:url("${ExperienceInline.src}")`}></span> sin pagar impuestos.</h2>
+        <div class="bento">
+          <article class="cell c7 img-cell">
+            <div class="cell-img" aria-hidden="true" style={`background-image:url("${LogisticsIntegral.src}")`}></div>
+            <div class="cell-body"><Home size={28} aria-hidden="true" /><strong>USD 150,000</strong><h3>Menaje de casa</h3><p>Muebles, electrodomésticos y artículos del hogar. Se importa en una sola ocasión.</p></div>
+          </article>
+          <article class="cell c5 paper">
+            <div class="cell-body"><Wrench size={28} aria-hidden="true" /><strong>USD 150,000</strong><h3>Implementos de trabajo</h3><p>Herramientas y equipo para su oficio o negocio, dentro de los doce meses posteriores a su retorno.</p></div>
+          </article>
+          <article class="cell c5 orange">
+            <div class="cell-body"><Car size={28} aria-hidden="true" /><strong>1 + 1</strong><h3>Vehículos</h3><p>Un vehículo de uso particular y uno de trabajo, en condiciones funcionales y conforme al Decreto 17-2010.</p></div>
+          </article>
+          <article class="cell c7 img-cell">
+            <div class="cell-img" aria-hidden="true" style={`background-image:url("${GroundTransport.src}")`}></div>
+            <div class="cell-body"><Landmark size={28} aria-hidden="true" /><strong>Primer año</strong><h3>Sin tasas vehiculares</h3><p>Exención de la Tasa Única Anual Vehicular, la Tasa Vial Municipal y demás contribuciones en el primer período fiscal.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mr-steps chapter">
+      <div class="shell">
+        <h2 class="mr-section-title light">El trámite, en tres paradas.</h2>
+        <div class="stack">
+          <article class="stack-card" style="--i:0">
+            <div class="stack-head"><ShieldCheck size={30} aria-hidden="true" /><h3>Instituto Nacional de Migración</h3></div>
+            <p>Solicite la constancia de persona migrante retornada estando ya en Honduras. Presente su DNI o pasaporte, una declaración jurada de domicilio y, si regresó de forma voluntaria, la prueba de su viaje. El costo es de L 200 mediante TGR-1.</p>
+            <p class="stack-note">La constancia vence doce meses después de su fecha de ingreso al país.</p>
+          </article>
+          <article class="stack-card" style="--i:1">
+            <div class="stack-head"><FileCheck2 size={30} aria-hidden="true" /><h3>Administración Aduanera</h3></div>
+            <p>Con la constancia, en la aduana de ingreso se registra la declaración de bienes en SARAH y se emite la DUCA. Necesita RTN y una lista del menaje e implementos en el formato oficial de Aduanas.</p>
+            <p class="stack-note">Aquí es donde MEGUIS le acompaña: documentación, valoración y despacho en Puerto Cortés.</p>
+          </article>
+          <article class="stack-card" style="--i:2">
+            <div class="stack-head"><Car size={30} aria-hidden="true" /><h3>Instituto de la Propiedad</h3></div>
+            <p>Registre su vehículo con la DUCA, el formulario RV-RE-05, su identificación vigente y copia de la constancia del INM.</p>
+            <p class="stack-note">El vehículo queda sin poder traspasarse durante doce meses.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mr-fine chapter">
+      <div class="shell">
+        <p class="fine-text" data-scrub-text>{fineprint}</p>
+      </div>
+    </section>
+
+    <section class="mr-faq chapter" data-reveal-section>
+      <div class="shell faq-grid" data-reveal>
+        <h2>Preguntas frecuentes sobre el retorno.</h2>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details name="mr-faq">
+              <summary><strong>{faq.question}</strong><i aria-hidden="true"></i></summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mr-contact" id="contacto">
+      <div class="shell contact-panel" data-reveal-contact>
+        <h2>¿Viene de regreso? Hablemos de su mudanza.</h2>
+        <p>Le explicamos los requisitos y nos encargamos del despacho de su menaje y vehículos en Puerto Cortés.</p>
+        <a class="wa-link" href={whatsapp} target="_blank" rel="noreferrer" data-seo-event="whatsapp_click">Escríbanos por WhatsApp al {site.phoneDisplay} <ArrowUpRight size={22} aria-hidden="true" /></a>
+        <address><MapPin size={16} aria-hidden="true" /> {site.address.street}, {site.address.locality}, {site.address.region}</address>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Split the fine print into words so each can scrub in sequence.
+  const scrub = document.querySelector<HTMLElement>("[data-scrub-text]");
+  if (scrub) scrub.innerHTML = scrub.textContent!.trim().split(/\s+/).map((w) => `<span>${w}</span>`).join(" ");
+
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    gsap.from("[data-hero-copy] > *", { y: 34, opacity: 0, duration: .9, stagger: .1, ease: "power3.out", delay: .1 });
+    gsap.from("[data-hero-media]", { y: 80, opacity: 0, scale: .9, duration: 1.2, ease: "power3.out", delay: .35 });
+    gsap.to("[data-hero-media] img", { yPercent: 10, scale: 1.08, ease: "none", scrollTrigger: { trigger: ".mr-hero", start: "top top", end: "bottom top", scrub: true } });
+
+    gsap.utils.toArray<HTMLElement>("[data-reveal-section]").forEach((section) => {
+      const target = section.querySelector("[data-reveal]");
+      if (target) gsap.from(target, { y: 30, opacity: 0, duration: .8, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 78%", once: true } });
+    });
+    gsap.utils.toArray<HTMLElement>(".bento .cell").forEach((cell, i) => {
+      gsap.from(cell, { scale: .9, opacity: 0, duration: .9, delay: (i % 2) * .12, ease: "power3.out", scrollTrigger: { trigger: cell, start: "top 88%", once: true } });
+    });
+
+    // Card stacking (desktop only): cards are sticky; earlier ones shrink and darken (stay opaque) as the next covers them.
+    gsap.matchMedia().add("(min-width: 901px)", () => {
+      const cards = gsap.utils.toArray<HTMLElement>(".stack-card");
+      cards.forEach((card, i) => {
+        const next = cards[i + 1];
+        if (next) gsap.to(card, { scale: .95, filter: "brightness(.8)", ease: "none", scrollTrigger: { trigger: next, start: "top 55%", end: "top 20%", scrub: true } });
+      });
+    });
+
+    if (scrub) gsap.fromTo(scrub.children, { opacity: .1 }, { opacity: 1, stagger: .05, ease: "none", scrollTrigger: { trigger: scrub, start: "top 80%", end: "bottom 45%", scrub: true } });
+
+    gsap.from("[data-reveal-contact] > *", { y: 40, opacity: 0, stagger: .1, duration: .9, ease: "power3.out", scrollTrigger: { trigger: "[data-reveal-contact]", start: "top 80%", once: true } });
+  }
+</script>
+
+<style>
+  .mr-page{--navy:#010d1c;--deep:#001021;--blue:#0a2942;--orange:#ff4b17;--coral:#e76f51;--paper:#eef1ed;overflow-x:hidden;width:100%;max-width:100%;background:var(--navy);color:#f6f7f8}
+  .shell{width:min(calc(100% - 32px),1410px);margin-inline:auto}.chapter{padding:clamp(7rem,13vw,12rem) 0}
+  .mr-page h1,.mr-page h2,.mr-page h3,.mr-page p{margin-top:0}.mr-page h1,.mr-page h2,.mr-page h3{letter-spacing:-.045em}
+  .kicker{margin:0 0 26px;color:#fb815c;font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+  .breadcrumbs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;color:#8396a6;font-size:.78rem}.breadcrumbs a{color:#c2ced7;text-decoration:none}.breadcrumbs a:hover{color:#fff}
+
+  .mr-hero{position:relative;overflow:hidden;min-height:100svh;padding:clamp(130px,16vh,180px) 0 clamp(80px,10vw,140px)}
+  .mr-glow{position:absolute;inset:0;background:radial-gradient(60% 55% at 15% 30%,#0a2942 0%,transparent 70%),radial-gradient(45% 45% at 90% 85%,#ff4b1730 0%,transparent 70%)}
+  .mr-hero-inner{position:relative;display:grid;grid-template-columns:repeat(12,1fr)}
+  .mr-hero-copy{position:relative;z-index:2;grid-column:1/span 10;grid-row:1}
+  .mr-hero h1{max-width:1100px;margin-bottom:30px;font-size:clamp(3rem,5.5vw,5.8rem);font-weight:560;line-height:.96}
+  .lead{max-width:640px;color:#c5d0db;font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.65}
+  .mr-hero-media{position:relative;z-index:1;grid-column:7/span 6;grid-row:2;margin:clamp(40px,5vw,72px) 0 0;overflow:hidden;aspect-ratio:4/3;border-radius:20px;box-shadow:0 40px 90px #0009}
+  .mr-hero-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.55) contrast(1.15)}
+
+  .mr-section-title{max-width:1150px;margin-bottom:clamp(50px,7vw,90px);font-size:clamp(2.6rem,5vw,5.4rem);font-weight:520;line-height:1.03}
+  .inline-image{display:inline-block;width:clamp(80px,10vw,160px);height:.62em;margin:0 .08em;vertical-align:.08em;border-radius:999px;background-position:center;background-size:cover}
+  .mr-benefits{background:var(--paper);color:#071625}
+  .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;grid-auto-rows:minmax(380px,auto);gap:14px}
+  .cell{position:relative;overflow:hidden;display:flex;border-radius:20px;background:var(--blue);color:#fff}.c7{grid-column:span 7}.c5{grid-column:span 5}
+  .cell-body{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;width:100%;padding:clamp(28px,3.5vw,52px)}
+  .cell strong{margin-top:auto;font-size:clamp(2.6rem,4.5vw,4.6rem);font-weight:600;letter-spacing:-.05em;line-height:1}
+  .cell h3{margin:0;font-size:clamp(1.4rem,2.2vw,2rem);font-weight:580}.cell p{max-width:440px;margin:0;color:#c3d0da;line-height:1.6}
+  .img-cell .cell-img{position:absolute;inset:0;background-position:center;background-size:cover;filter:grayscale(.4) contrast(1.15);transition:transform .7s ease-out}
+  .img-cell:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,#010d1cf2 10%,#010d1c33 75%)}
+  .img-cell:hover .cell-img{transform:scale(1.05)}
+  .paper{background:#fff;color:#071625;box-shadow:inset 0 0 0 1px #d5dbdc}.paper p{color:#4b5963}
+  .orange{background:var(--orange);color:var(--navy)}.orange p{color:#2a1408}
+  .cell{transition:transform .5s ease}.cell:hover{transform:translateY(-4px)}
+
+  .mr-steps{background:var(--deep)}.light{color:#fff}
+  .stack{display:grid;gap:clamp(40px,6vh,70px);padding-bottom:10vh}
+  .stack-card{position:sticky;top:calc(110px + var(--i) * 28px);transform-origin:center top;min-height:min(60vh,520px);padding:clamp(32px,5vw,72px);border:1px solid #ffffff1f;border-radius:24px;background:linear-gradient(160deg,#0d3150,#06192b);box-shadow:0 -20px 60px #0007}
+  .stack-card:nth-child(2){background:linear-gradient(160deg,#14324a,#0a2236)}.stack-card:nth-child(3){background:linear-gradient(160deg,#ff5a2a,#d63c0f);color:var(--navy)}
+  .stack-head{display:flex;align-items:center;gap:18px;margin-bottom:34px;color:var(--orange)}.stack-card:nth-child(3) .stack-head{color:var(--navy)}
+  .stack-head h3{margin:0;color:inherit;font-size:clamp(1.9rem,3.6vw,3.6rem);font-weight:540;line-height:1}
+  .stack-card p{max-width:820px;color:#e2e9ef;font-size:clamp(1.05rem,1.4vw,1.25rem);line-height:1.7}.stack-card:nth-child(3) p{color:#1d0d05}
+  .stack-note{margin:28px 0 0;padding-top:22px;border-top:1px solid #ffffff26;font-weight:600}.stack-card:nth-child(3) .stack-note{border-color:#010d1c40}
+
+  .mr-fine{background:var(--navy)}
+  .fine-text{max-width:1180px;margin:0 auto;font-size:clamp(1.8rem,3.6vw,3.6rem);font-weight:520;letter-spacing:-.035em;line-height:1.2}
+
+  .mr-faq{padding-top:0;background:var(--navy)}
+  .faq-grid{display:grid;grid-template-columns:.8fr 1.4fr;gap:clamp(50px,9vw,140px)}
+  .faq-grid h2{margin:0;font-size:clamp(2.6rem,4.6vw,4.8rem);font-weight:520;line-height:1}
+  .faq-list{border-top:1px solid #ffffff2b}.faq-list details{border-bottom:1px solid #ffffff2b}
+  .faq-list summary{display:grid;grid-template-columns:1fr 26px;align-items:center;gap:16px;padding:28px 0;cursor:pointer;list-style:none}
+  .faq-list summary::-webkit-details-marker{display:none}
+  .faq-list summary strong{font-size:clamp(1.1rem,1.7vw,1.5rem);font-weight:600;letter-spacing:-.02em}
+  .faq-list summary i{position:relative;width:20px;height:20px}
+  .faq-list summary i:before,.faq-list summary i:after{content:"";position:absolute;top:9px;left:2px;width:16px;height:1px;background:#fff;transition:transform .25s ease}
+  .faq-list summary i:after{transform:rotate(90deg)}.faq-list details[open] summary i:after{transform:rotate(0)}
+  .faq-list details>p{max-width:700px;margin:0;padding:0 42px 28px 0;color:#9eb0bf;line-height:1.75}
+
+  .mr-contact{padding:0 0 clamp(7rem,13vw,12rem);background:var(--navy)}
+  .contact-panel{position:relative;overflow:hidden;padding:clamp(60px,9vw,135px);border-radius:24px;background:var(--coral);color:var(--navy)}
+  .contact-panel:after{content:"";position:absolute;right:-190px;bottom:-330px;width:580px;height:580px;border:1px solid #010d1c52;border-radius:50%;box-shadow:0 0 0 70px #010d1c0b,0 0 0 140px #010d1c08;pointer-events:none}
+  .contact-panel h2{position:relative;z-index:1;max-width:1050px;margin-bottom:26px;font-size:clamp(2.8rem,6vw,6.4rem);font-weight:560;line-height:.96}
+  .contact-panel>p{position:relative;z-index:1;max-width:620px;color:#102235;font-size:1.1rem;line-height:1.7}
+  .wa-link{position:relative;z-index:1;display:inline-flex;align-items:center;gap:12px;margin-top:22px;color:var(--navy);font-size:clamp(1.25rem,2.4vw,2rem);font-weight:650;letter-spacing:-.02em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;transition:gap .3s ease}
+  .wa-link:hover{gap:20px}.wa-link:focus-visible,details summary:focus-visible{outline:3px solid #ff754c;outline-offset:4px}
+  .contact-panel address{position:relative;z-index:1;display:flex;align-items:center;gap:8px;margin-top:40px;color:#102235;font-size:.9rem;font-style:normal}
+
+  @media(max-width:900px){.mr-hero-copy{grid-column:1/-1}.mr-hero-media{grid-column:3/-1;margin-top:40px}.c7,.c5{grid-column:1/-1}.bento{grid-auto-rows:minmax(320px,auto)}.faq-grid{grid-template-columns:1fr;gap:50px}.stack{gap:20px;padding-bottom:0}.stack-card{position:relative;top:auto;min-height:0}}
+  @media(max-width:620px){.shell{width:min(calc(100% - 24px),1410px)}.mr-hero{min-height:auto}.mr-hero h1{font-size:clamp(2.4rem,10.5vw,4rem)}.mr-hero-media{grid-column:1/-1}.stack-head{flex-direction:column;align-items:flex-start;gap:14px}.bento{grid-auto-rows:minmax(280px,auto)}.contact-panel{padding:48px 24px}.contact-panel address{align-items:flex-start}.contact-panel{border-radius:18px}.wa-link{font-size:1.15rem}}
+  @media(prefers-reduced-motion:reduce){.cell,.cell-img,.wa-link,.faq-list summary i:after{transition:none}}
+</style>
